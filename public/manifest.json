@@ -1,0 +1,21 @@
+{
+  "name": "Admin Dashboard Template",
+  "short_name": "Admin Dashboard",
+  "description": "Professional React admin dashboard template with Tailwind CSS v4, shadcn/ui components, and dynamic theming",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "business", "developer"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

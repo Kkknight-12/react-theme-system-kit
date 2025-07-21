@@ -1,0 +1,589 @@
+/**
+ * React Theme System Kit - Tailwind v4 + shadcn/ui
+ * 
+ * Architecture:
+ * 1. @theme - Static color scales (primary, secondary, accent, neutral)
+ * 2. CSS Bridge - Dark mode switching variables (:root/.dark)
+ * 3. @theme inline - Maps bridge variables to Tailwind utilities
+ * 
+ * See THEME-IMPLEMENTATION.md for usage guide
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Theme colors using @theme directive for Tailwind v4 */
+@theme {
+  /* ===== TAILWIND COLOR SCALES ===== */
+  /* These create Tailwind utilities like bg-primary-500, text-neutral-300, etc. */
+  /* Must use static values, not references to other variables */
+
+  /* Primary colors - Default emerald theme */
+  --color-primary-50: oklch(0.98 0.04 166);
+  --color-primary-100: oklch(0.96 0.08 166);
+  --color-primary-200: oklch(0.91 0.14 166);
+  --color-primary-300: oklch(0.84 0.20 166);
+  --color-primary-400: oklch(0.74 0.22 166);
+  --color-primary-500: oklch(0.64 0.20 166);
+  --color-primary-600: oklch(0.54 0.18 166);
+  --color-primary-700: oklch(0.44 0.14 166);
+  --color-primary-800: oklch(0.36 0.11 166);
+  --color-primary-900: oklch(0.30 0.09 166);
+  --color-primary-950: oklch(0.20 0.08 166);
+
+  /* Secondary colors - Will be set by theme (default to blue for complementary) */
+  --color-secondary-50: oklch(0.97 0.014 254);
+  --color-secondary-100: oklch(0.932 0.032 255);
+  --color-secondary-200: oklch(0.882 0.059 254);
+  --color-secondary-300: oklch(0.809 0.105 251);
+  --color-secondary-400: oklch(0.707 0.165 254);
+  --color-secondary-500: oklch(0.623 0.214 259);
+  --color-secondary-600: oklch(0.546 0.245 262);
+  --color-secondary-700: oklch(0.488 0.243 264);
+  --color-secondary-800: oklch(0.424 0.199 265);
+  --color-secondary-900: oklch(0.379 0.146 265);
+  --color-secondary-950: oklch(0.282 0.091 267);
+
+  /* Accent colors - Will be set by theme (default to purple for analogous) */
+  --color-accent-50: oklch(0.977 0.014 308);
+  --color-accent-100: oklch(0.946 0.033 307);
+  --color-accent-200: oklch(0.902 0.063 306);
+  --color-accent-300: oklch(0.827 0.119 306);
+  --color-accent-400: oklch(0.714 0.203 305);
+  --color-accent-500: oklch(0.627 0.265 303);
+  --color-accent-600: oklch(0.558 0.288 302);
+  --color-accent-700: oklch(0.496 0.265 301);
+  --color-accent-800: oklch(0.438 0.218 303);
+  --color-accent-900: oklch(0.381 0.176 304);
+  --color-accent-950: oklch(0.291 0.149 302);
+
+  /* Neutral scale - for muted backgrounds and borders */
+  --color-neutral-50: oklch(0.985 0 0);
+  --color-neutral-100: oklch(0.967 0.001 286);
+  --color-neutral-200: oklch(0.92 0.004 286);
+  --color-neutral-300: oklch(0.871 0.006 286);
+  --color-neutral-400: oklch(0.705 0.015 286);
+  --color-neutral-500: oklch(0.552 0.016 286);
+  --color-neutral-600: oklch(0.442 0.017 286);
+  --color-neutral-700: oklch(0.37 0.013 286);
+  --color-neutral-800: oklch(0.274 0.006 286);
+  --color-neutral-900: oklch(0.21 0.006 286);
+  --color-neutral-950: oklch(0.141 0.005 286);
+
+  /* Semantic colors */
+  --color-success: oklch(0.74 0.21 142);
+  --color-warning: oklch(0.82 0.17 85);
+  --color-error: oklch(0.67 0.22 25);
+  --color-info: oklch(0.62 0.21 255);
+
+  /* Destructive colors with foreground */
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-destructive-foreground: oklch(0.985 0 0);
+
+  /* ===== TAILWIND STATIC VALUES ===== */
+  /* These exist for Tailwind internals but utilities use the bridge pattern */
+  /* The actual utilities (bg-background, etc.) reference CSS bridge variables */
+  --color-background: oklch(1 0 0);  /* white - utilities use bridge pattern */
+  --color-card: oklch(1 0 0);  /* white - utilities use bridge pattern */
+  --color-popover: oklch(1 0 0);  /* white - utilities use bridge pattern */
+
+  /* ===== TAILWIND SPACING & DESIGN TOKENS ===== */
+  /* Custom spacing scale - COMMENTED OUT: Caused namespace collision with Tailwind internals */
+  /* These variables interfered with Tailwind's width utilities (like max-w-sm) */
+  /* Tailwind v4 has its own internal spacing system that utilities depend on */
+  /* Using custom --spacing-* variables breaks responsive breakpoints and container queries */
+  /* --spacing-xs: 0.5rem; */
+  /* --spacing-sm: 0.75rem; */
+  /* --spacing-md: 1rem; */
+  /* --spacing-lg: 1.5rem; */
+  /* --spacing-xl: 2rem; */
+  /* --spacing-2xl: 3rem; */
+  /* --spacing-3xl: 4rem; */
+
+  /* Custom radius scale - KEPT: These extend Tailwind's default radius scale */
+  /* Tailwind v4 provides: rounded-none, rounded-sm, rounded, rounded-md, rounded-lg, rounded-xl */
+  /* These add extra sizes (xs, 2xl, 3xl, 4xl) not in the default scale */
+  /* Note: sm/md/lg/xl are computed below based on shadcn's --radius variable */
+  --radius-xs: 0.125rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+
+  /* Custom animations - KEPT: These are truly custom animations not provided by Tailwind */
+  /* Tailwind v4 animate utilities: animate-spin, animate-ping, animate-pulse, animate-bounce */
+  /* Our custom animations add fade/slide effects and a slower spin variant */
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-fade-out: fade-out 0.3s ease-in;
+  --animate-slide-in: slide-in 0.3s ease-out;
+  --animate-slide-out: slide-out 0.3s ease-in;
+  --animate-spin-slow: spin 3s linear infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-out {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* ===== CSS BRIDGE VARIABLES FOR DARK MODE ===== */
+/* Following official shadcn Tailwind v4 pattern */
+/* These variables handle dark mode switching and MUST be defined outside @theme */
+/* They are referenced by @theme inline to create dark-mode-aware utilities */
+:root {
+  /* Background colors that switch in dark mode */
+  --background: oklch(1 0 0);  /* white */
+  --card: oklch(1 0 0);  /* white */
+  --popover: oklch(1 0 0);  /* white */
+
+  /* Text colors that switch in dark mode */
+  --foreground: oklch(0.141 0.005 286);  /* neutral-950 */
+  --card-foreground: oklch(0.141 0.005 286);  /* neutral-950 */
+  --popover-foreground: oklch(0.141 0.005 286);  /* neutral-950 */
+
+  /* Background colors for muted elements */
+  --muted-foreground: oklch(0.552 0.016 286);  /* neutral-500 */
+  --muted: oklch(0.967 0.001 286);  /* neutral-100 */
+
+  /* Accent colors for ghost buttons and hover states */
+  /* NOTE: --accent and --accent-foreground are dynamically injected by theme.js */
+  /* They are calculated based on the primary color hue for each theme */
+  /* Light mode: 97% lightness with 2% chroma */
+  /* Dark mode: 20% lightness with 4% chroma */
+  /* --accent: oklch(0.97 0 0); */
+  /* --accent-foreground: oklch(0.205 0 0); */
+
+  /* Form element colors */
+  --border: oklch(0.92 0.004 286);  /* neutral-200 */
+  --input: oklch(0.92 0.004 286);  /* neutral-200 */
+
+  /* Primary and secondary colors don't change in dark mode */
+  /* They are defined as static color scales in @theme and updated by theme.js */
+}
+
+.dark {
+  /* Dark mode overrides for CSS bridge variables */
+  --background: oklch(0.141 0.005 286);  /* neutral-950 */
+  --card: oklch(0.21 0.006 286);  /* neutral-900 */
+  --popover: oklch(0.21 0.006 286);  /* neutral-900 */
+
+  --foreground: oklch(0.985 0 0);  /* white */
+  --card-foreground: oklch(0.985 0 0);  /* white */
+  --popover-foreground: oklch(0.985 0 0);  /* white */
+  --muted: oklch(0.274 0.006 286);  /* neutral-800 */
+  --muted-foreground: oklch(0.705 0.015 286);  /* neutral-400 */
+
+  /* Accent colors are dynamically injected here by theme.js */
+  /* --accent: oklch(0.269 0 0); */
+  /* --accent-foreground: oklch(0.985 0 0); */
+
+  --border: oklch(1 0 0 / 10%);  /* transparent white */
+  --input: oklch(1 0 0 / 15%);  /* transparent white */
+}
+
+/* ===== @THEME INLINE - THE BRIDGE PATTERN ===== */
+/* CRITICAL: Variables that reference other variables MUST use @theme inline */
+/* This creates utilities like bg-foreground that use var(--foreground) */
+/* Without 'inline', Tailwind would resolve the value at build time, breaking dark mode */
+@theme inline {
+  /* Map CSS bridge variables to Tailwind theme variables */
+  /* Creates utilities: bg-foreground, text-muted-foreground, border-border, etc. */
+
+  /* Background colors that switch in dark mode */
+  --color-background: var(--background);
+  --color-card: var(--card);
+  --color-popover: var(--popover);
+
+  /* Text colors that switch in dark mode */
+  --color-foreground: var(--foreground);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+
+  /* Ring always follows primary (doesn't change in dark mode) */
+  --color-ring: var(--color-primary-500);
+
+  /* Accent for hover states - references CSS bridge variable */
+  /* COMMENTED OUT: These are dynamically injected by theme.js based on primary hue */
+  /* Defining them here would override the dynamic injection and break theme switching */
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* ===== COMPUTED RADIUS VALUES ===== */
+  /* These reference the base --radius from shadcn */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* ===== 5-SHADE SYSTEM MAPPINGS ===== */
+  /* These create simpler utility names that reference our full scale */
+  --color-primary-lighter: var(--color-primary-200);
+  --color-primary-light: var(--color-primary-400);
+  --color-primary: var(--color-primary-500);
+  --color-primary-dark: var(--color-primary-600);
+  --color-primary-darker: var(--color-primary-800);
+
+  --color-secondary-lighter: var(--color-secondary-200);
+  --color-secondary-light: var(--color-secondary-400);
+  --color-secondary: var(--color-secondary-500);
+  --color-secondary-dark: var(--color-secondary-600);
+  --color-secondary-darker: var(--color-secondary-800);
+
+  /* Accent scale mappings - uses full accent color scale from theme.js */
+  /* These create utilities like bg-accent-light, text-accent-dark, etc. */
+  --color-accent-lighter: var(--color-accent-200);
+  --color-accent-light: var(--color-accent-400);
+  --color-accent: var(--color-accent-500);
+  --color-accent-dark: var(--color-accent-600);
+  --color-accent-darker: var(--color-accent-800);
+}
+
+/* ===== DARK MODE OVERRIDES - REMOVED ===== */
+/* The bridge pattern handles dark mode switching through CSS variables */
+/* Static values in @theme are only for Tailwind's internal use */
+
+/* shadcn variable mappings */
+@layer base {
+  :root {
+    /* ===== SHADCN CSS VARIABLES ===== */
+    /* These are CSS variables used by shadcn components */
+    /* They reference our Tailwind theme variables but don't create utilities */
+
+    /* Core radius - base value for shadcn components */
+    --radius: 0.65rem;
+
+    /* ===== SHADCN COMPONENT COLORS ===== */
+    /* These map our Tailwind theme to shadcn's expected variables */
+
+    /* Backgrounds & Foregrounds - inherit from CSS bridge variables */
+    /* These are already defined in the CSS bridge section and switch properly in dark mode */
+    /* No need to redefine them here - shadcn components will use the bridge variables directly */
+
+    /* Primary colors - shadcn Button variant="default" */
+    --primary: var(--color-primary-500);
+    --primary-foreground: oklch(0.985 0 0);
+
+    /* Secondary - shadcn Button variant="secondary" (vibrant, not muted) */
+    --secondary: var(--color-secondary-500);
+    --secondary-foreground: oklch(0.985 0 0);
+
+    /* Muted - uses CSS bridge variables for dark mode switching */
+    /* These are already defined in the CSS bridge section and switch properly */
+    /* Do not redefine here to avoid issues */
+
+    /* Accent - uses the dynamically injected values from theme.js */
+    /* Do not redefine here to avoid circular references */
+
+    /* Destructive - shadcn Button variant="destructive" */
+    --destructive: var(--color-destructive);
+    --destructive-foreground: var(--color-destructive-foreground);
+
+    /* Form elements - inherit from CSS bridge variables for dark mode support */
+    /* Border and input are defined in CSS bridge section and switch in dark mode */
+    --ring: var(--color-primary-500); /* Focus ring color - same in both modes */
+
+    /* ===== SHADCN CHART COLORS ===== */
+    /* Used by Recharts components */
+    --chart-1: var(--color-primary-600);
+    --chart-2: var(--color-secondary-600);
+    --chart-3: var(--color-accent-600);
+    --chart-4: var(--color-primary-400);
+    --chart-5: var(--color-secondary-400);
+
+    /* ===== SHADCN SIDEBAR COMPONENT ===== */
+    --sidebar: oklch(0.985 0 0); /* Sidebar background */
+    --sidebar-foreground: var(--color-neutral-950); /* Sidebar text */
+    --sidebar-primary: var(--color-primary-500); /* Active item */
+    --sidebar-primary-foreground: oklch(0.985 0 0); /* Active item text */
+    --sidebar-accent: var(--color-neutral-100); /* Hover state */
+    --sidebar-accent-foreground: var(--color-neutral-900); /* Hover text */
+    --sidebar-border: var(--color-neutral-200); /* Dividers */
+    --sidebar-ring: var(--color-primary-500); /* Focus ring */
+
+    /* Additional theme variables */
+    --theme-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ===== DARK MODE SHADCN OVERRIDES ===== */
+  /* These override shadcn variables for dark mode */
+  :root.dark {
+    /* Backgrounds & Foregrounds - inherit from CSS bridge variables */
+    /* Already handled by the .dark class in CSS bridge section above */
+
+    /* Primary colors */
+    --primary: var(--color-primary-500);
+    --primary-foreground: oklch(0.985 0 0);
+
+    /* Secondary - Still vibrant in dark mode */
+    --secondary: var(--color-secondary-500);
+    --secondary-foreground: oklch(0.985 0 0);
+
+    /* Muted - inherits from CSS bridge variables (already defined) */
+    /* Do not redefine here to avoid overriding the bridge pattern */
+
+    /* Accent - inherits from dynamically injected values by theme.js */
+    /* Do not redefine here to avoid circular references */
+
+    /* Destructive/Error */
+    --destructive: oklch(0.704 0.191 22.216);
+    --destructive-foreground: oklch(0.985 0 0);
+
+    /* Form elements - inherit from CSS bridge variables */
+    /* Border and input already switch in dark mode via CSS bridge */
+    --ring: var(--color-primary-500); /* Focus ring - same in both modes */
+
+    /* Chart colors - adjusted for dark mode */
+    --chart-1: var(--color-primary-400);
+    --chart-2: var(--color-secondary-400);
+    --chart-3: var(--color-accent-400);
+    --chart-4: var(--color-primary-300);
+    --chart-5: var(--color-secondary-300);
+
+    /* Sidebar dark mode */
+    --sidebar: var(--color-neutral-900);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: var(--color-primary-500);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: var(--color-neutral-800);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: var(--color-primary-500);
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    transition: background-color var(--theme-transition), color var(--theme-transition);
+  }
+
+  /* Theme transitions disabled to prevent delays during dark mode switching */
+  /* Components render at their own speed without forced synchronization */
+}
+
+@layer utilities {
+  /* ===== CUSTOM UTILITIES ===== */
+  /* Auto-generated by @theme inline: bg-background, text-foreground, border-border, etc. */
+  /* Manual utilities needed for shadcn compatibility and semantic colors: */
+
+  /* Semantic colors - these use direct theme variables */
+  .bg-success { background-color: var(--color-success); }
+  .bg-warning { background-color: var(--color-warning); }
+  .bg-error { background-color: var(--color-error); }
+  .bg-info { background-color: var(--color-info); }
+
+  /* Text colors */
+  /* .text-background { color: var(--background); } */ /* Auto-generated by Tailwind v4 */
+  /* .text-foreground { color: var(--foreground); } */ /* Auto-generated by Tailwind v4 */
+  /* .text-card { color: var(--card); } */ /* Auto-generated by Tailwind v4 */
+  /* .text-card-foreground { color: var(--card-foreground); } */ /* Auto-generated by Tailwind v4 */
+  /* .text-popover { color: var(--popover); } */ /* Auto-generated by Tailwind v4 */
+  /* .text-popover-foreground { color: var(--popover-foreground); } */ /* Auto-generated by Tailwind v4 */
+  /* .text-muted { color: var(--muted); } */ /* Auto-generated by Tailwind v4 */
+  /* .text-muted-foreground { color: var(--muted-foreground); } */ /* Auto-generated by Tailwind v4 */
+  .text-primary { color: var(--primary); } /* Needed - not mapped in @theme inline */
+  .text-primary-foreground { color: var(--primary-foreground); } /* Needed - not mapped in @theme inline */
+  .text-secondary { color: var(--secondary); } /* Needed - not mapped in @theme inline */
+  .text-secondary-foreground { color: var(--secondary-foreground); } /* Needed - not mapped in @theme inline */
+  .text-destructive { color: var(--destructive); } /* Needed - not mapped in @theme inline */
+  .text-destructive-foreground { color: var(--destructive-foreground); } /* Needed - not mapped in @theme inline */
+  /* .text-border { color: var(--border); } */ /* Auto-generated by Tailwind v4 */
+  /* .text-input { color: var(--input); } */ /* Auto-generated by Tailwind v4 */
+  .text-ring { color: var(--ring); } /* Needed - maps to different variable in @theme inline */
+
+  /* Semantic text colors */
+  .text-success { color: var(--color-success); }
+  .text-warning { color: var(--color-warning); }
+  .text-error { color: var(--color-error); }
+  .text-info { color: var(--color-info); }
+
+  /* Border colors */
+  /* .border-background { border-color: var(--background); } */ /* Auto-generated by Tailwind v4 */
+  /* .border-foreground { border-color: var(--foreground); } */ /* Auto-generated by Tailwind v4 */
+  /* .border-card { border-color: var(--card); } */ /* Auto-generated by Tailwind v4 */
+  /* .border-card-foreground { border-color: var(--card-foreground); } */ /* Auto-generated by Tailwind v4 */
+  /* .border-popover { border-color: var(--popover); } */ /* Auto-generated by Tailwind v4 */
+  /* .border-popover-foreground { border-color: var(--popover-foreground); } */ /* Auto-generated by Tailwind v4 */
+  /* .border-muted { border-color: var(--muted); } */ /* Auto-generated by Tailwind v4 */
+  /* .border-muted-foreground { border-color: var(--muted-foreground); } */ /* Auto-generated by Tailwind v4 */
+  .border-primary { border-color: var(--primary); } /* Needed - not mapped in @theme inline */
+  .border-primary-foreground { border-color: var(--primary-foreground); } /* Needed - not mapped in @theme inline */
+  .border-secondary { border-color: var(--secondary); } /* Needed - not mapped in @theme inline */
+  .border-secondary-foreground { border-color: var(--secondary-foreground); } /* Needed - not mapped in @theme inline */
+  /* .border-accent { border-color: var(--accent); } */ /* Will be needed when accent is mapped */
+  /* .border-accent-foreground { border-color: var(--accent-foreground); } */ /* Will be needed when accent is mapped */
+  .border-destructive { border-color: var(--destructive); } /* Needed - not mapped in @theme inline */
+  .border-destructive-foreground { border-color: var(--destructive-foreground); } /* Needed - not mapped in @theme inline */
+  /* .border-border { border-color: var(--border); } */ /* Auto-generated by Tailwind v4 */
+  /* .border-input { border-color: var(--input); } */ /* Auto-generated by Tailwind v4 */
+  .border-ring { border-color: var(--ring); } /* Needed - maps to different variable in @theme inline */
+
+  /* Fix for shadcn select items in Tailwind v4 */
+  [data-slot="select-item"]:focus {
+    background-color: var(--muted) !important;
+  }
+
+  /* Custom utilities that extend Tailwind */
+  .animate-in {
+    animation: var(--animate-fade-in);
+  }
+
+  .animate-out {
+    animation: var(--animate-fade-out);
+  }
+
+  /* Toggle Switch using new color system */
+  .toggle {
+    @apply relative inline-flex h-6 w-11 items-center rounded-full;
+    @apply bg-neutral-300 dark:bg-neutral-600;
+    @apply transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .toggle:checked {
+    @apply bg-primary-500;
+  }
+
+  .toggle::before {
+    content: '';
+    @apply absolute left-1 h-4 w-4 rounded-full bg-white;
+    @apply transition-transform;
+  }
+
+  .toggle:checked::before {
+    @apply translate-x-5;
+  }
+
+  /* Disable animations */
+  .disable-animations * {
+    animation-duration: 0ms !important;
+    transition-duration: 0ms !important;
+  }
+
+  /* Particle container */
+  .particle-container {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+  }
+
+  /* Glass card */
+  .glass-card {
+    @apply rounded-lg p-6;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  /* Button variants using new color system */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md font-medium transition-all;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-neutral-100 dark:hover:bg-neutral-800;
+  }
+
+  /* Button sizes */
+  .btn-small {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .btn-medium {
+    @apply px-4 py-2 text-base;
+  }
+
+  .btn-large {
+    @apply px-6 py-3 text-lg;
+  }
+
+  .btn-icon {
+    @apply p-2;
+  }
+
+  /* Card styles using new color system */
+  .card {
+    @apply rounded-lg border;
+    background-color: var(--card);
+  }
+
+  /* Dark mode card shadow */
+  .dark .card {
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply rounded bg-neutral-200 dark:bg-neutral-800 animate-pulse;
+  }
+}
+
+/* Final layer for utility classes */
+@layer base {
+  * {
+    outline-color: color-mix(in oklch, var(--ring) 50%, transparent);
+  }
+  body {
+    /* Body styles are already defined above with CSS variables */
+  }
+}

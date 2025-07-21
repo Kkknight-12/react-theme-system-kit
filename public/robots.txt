@@ -1,0 +1,13 @@
+# Robots.txt for Admin Dashboard Template
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /.env
+
+# Sitemap location
+Sitemap: https://admin-dashboard-template-knight.vercel.app/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
