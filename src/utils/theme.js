@@ -296,6 +296,12 @@ export function applyTheme(themeName) {
 
   const root = document.documentElement;
 
+  // Remove theme initialization styles if they exist
+  const criticalStyles = document.getElementById('theme-critical');
+  if (criticalStyles) {
+    criticalStyles.remove();
+  }
+
   // Check cache first
   if (themeCache.has(themeName)) {
     const styleId = 'dynamic-theme-colors';

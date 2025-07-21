@@ -194,8 +194,8 @@
   /* They are calculated based on the primary color hue for each theme */
   /* Light mode: 97% lightness with 2% chroma */
   /* Dark mode: 20% lightness with 4% chroma */
-  /* --accent: oklch(0.97 0 0); */
-  /* --accent-foreground: oklch(0.205 0 0); */
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
 
   /* Form element colors */
   --border: oklch(0.92 0.004 286);  /* neutral-200 */
@@ -218,8 +218,8 @@
   --muted-foreground: oklch(0.705 0.015 286);  /* neutral-400 */
 
   /* Accent colors are dynamically injected here by theme.js */
-  /* --accent: oklch(0.269 0 0); */
-  /* --accent-foreground: oklch(0.985 0 0); */
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
 
   --border: oklch(1 0 0 / 10%);  /* transparent white */
   --input: oklch(1 0 0 / 15%);  /* transparent white */
@@ -279,11 +279,11 @@
 
   /* Accent scale mappings - uses full accent color scale from theme.js */
   /* These create utilities like bg-accent-light, text-accent-dark, etc. */
-  --color-accent-lighter: var(--color-accent-200);
-  --color-accent-light: var(--color-accent-400);
-  --color-accent: var(--color-accent-500);
-  --color-accent-dark: var(--color-accent-600);
-  --color-accent-darker: var(--color-accent-800);
+  /* --color-accent-lighter: var(--color-accent-200); */
+  /* --color-accent-light: var(--color-accent-400); */
+  /* --color-accent: var(--color-accent-500); */
+  /* --color-accent-dark: var(--color-accent-600); */
+  /* --color-accent-darker: var(--color-accent-800); */
 }
 
 /* ===== DARK MODE OVERRIDES - REMOVED ===== */

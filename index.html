@@ -37,39 +37,8 @@
     <meta name="theme-color" content="#ffffff" />
     <meta name="color-scheme" content="light dark" />
     
-    <!-- Immediate dark mode initialization to prevent flash -->
-    <script>
-      // Apply dark mode immediately to prevent flash of wrong theme
-      (function() {
-        try {
-          // Check both sources for dark mode state
-          // 1. First check settings.themeMode (new system)
-          const settings = localStorage.getItem('settings');
-          let isDark = false;
-          
-          if (settings) {
-            try {
-              const parsed = JSON.parse(settings);
-              isDark = parsed.themeMode === 'dark';
-            } catch (e) {
-              // Fall back to dark-mode key if settings parse fails
-              isDark = localStorage.getItem('dark-mode') === 'true';
-            }
-          } else {
-            // No settings yet, check legacy dark-mode key
-            isDark = localStorage.getItem('dark-mode') === 'true';
-          }
-          
-          if (isDark) {
-            document.documentElement.classList.add('dark');
-            const meta = document.querySelector('meta[name="theme-color"]');
-            if (meta) meta.content = '#242424';
-          }
-        } catch (e) {
-          // Fail silently - localStorage might be blocked
-        }
-      })();
-    </script>
+    <!-- Immediate theme initialization to prevent FOUC -->
+    <script src="/theme-init.js"></script>
     
     <!-- Performance & Security -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
