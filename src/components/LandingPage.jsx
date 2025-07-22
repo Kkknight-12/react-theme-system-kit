@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Check, Sparkles, Palette, Moon, Zap, Code, Smartphone, Shield, ArrowRight, Github, Package, Layers, GitBranch } from "lucide-react"
+import { Check, Sparkles, Palette, Moon, Zap, Code, Smartphone, Shield, ArrowRight, Github, Package, Layers, GitBranch, LayoutDashboard, ShoppingBag, Settings } from "lucide-react"
 import { Link } from "react-router-dom"
 import SettingsContext from "@/contexts/SettingsContext"
 const { useSettings } = SettingsContext
@@ -255,8 +255,126 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Code Example */}
+      {/* Example Layouts */}
       <section className="py-20 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Ready-to-Use Layouts
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Professional layouts that adapt to your theme
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <Card className="group hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-primary-500/10 flex items-center justify-center mb-4 group-hover:bg-primary-500/20 transition-colors">
+                  <LayoutDashboard className="h-6 w-6 text-primary-500" />
+                </div>
+                <CardTitle>Analytics Dashboard</CardTitle>
+                <CardDescription>
+                  Complete dashboard with charts, stats, and data visualization
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-primary-500" />
+                    Revenue & sales charts
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-primary-500" />
+                    KPI metric cards
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-primary-500" />
+                    Recent activity feed
+                  </li>
+                </ul>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/dashboard">
+                    View Dashboard
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-secondary-500/10 flex items-center justify-center mb-4 group-hover:bg-secondary-500/20 transition-colors">
+                  <ShoppingBag className="h-6 w-6 text-secondary-500" />
+                </div>
+                <CardTitle>E-commerce Store</CardTitle>
+                <CardDescription>
+                  Modern product catalog with filters and shopping features
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-secondary-500" />
+                    Product grid & list views
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-secondary-500" />
+                    Advanced filtering
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-secondary-500" />
+                    Shopping cart UI
+                  </li>
+                </ul>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/ecommerce">
+                    View E-commerce
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center mb-4 group-hover:bg-accent-500/20 transition-colors">
+                  <Settings className="h-6 w-6 text-accent-500" />
+                </div>
+                <CardTitle>Settings & Profile</CardTitle>
+                <CardDescription>
+                  Comprehensive user settings and profile management
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-accent-500" />
+                    Profile management
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-accent-500" />
+                    Security settings
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-accent-500" />
+                    Privacy controls
+                  </li>
+                </ul>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/settings">
+                    View Settings
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Code Example */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">

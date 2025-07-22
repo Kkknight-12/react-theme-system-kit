@@ -3,6 +3,9 @@ import SettingsSheet from '@/components/settings/SettingsSheet.jsx'
 import ThemeShowcase from '@/components/ThemeShowcase.jsx'
 import ShadcnShowcase from '@/components/ShadcnShowcase.jsx'
 import LandingPage from '@/components/LandingPage.jsx'
+import DashboardLayout from '@/components/layouts/DashboardLayout.jsx'
+import EcommerceLayout from '@/components/layouts/EcommerceLayout.jsx'
+import SettingsProfileLayout from '@/components/layouts/SettingsProfileLayout.jsx'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ArrowLeft } from 'lucide-react'
 import './App.css'
@@ -43,12 +46,42 @@ function DemoPage() {
   )
 }
 
+// Layout wrapper with theme controls
+function LayoutWrapper({ children }) {
+  return (
+    <div className="min-h-screen bg-background">
+      <SettingsSheet />
+      
+      {/* Navigation Header */}
+      <div className="border-b">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2 text-lg font-semibold hover:text-primary-500 transition-colors">
+            <ArrowLeft className="h-5 w-5" />
+            Back to Home
+          </Link>
+          <div className="flex items-center gap-4">
+            <Link to="/demo" className="text-sm hover:text-primary-500">Components</Link>
+            <Link to="/dashboard" className="text-sm hover:text-primary-500">Dashboard</Link>
+            <Link to="/ecommerce" className="text-sm hover:text-primary-500">E-commerce</Link>
+            <Link to="/settings" className="text-sm hover:text-primary-500">Settings</Link>
+          </div>
+        </div>
+      </div>
+      
+      {children}
+    </div>
+  )
+}
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/demo" element={<DemoPage />} />
+        <Route path="/dashboard" element={<LayoutWrapper><DashboardLayout /></LayoutWrapper>} />
+        <Route path="/ecommerce" element={<LayoutWrapper><EcommerceLayout /></LayoutWrapper>} />
+        <Route path="/settings" element={<LayoutWrapper><SettingsProfileLayout /></LayoutWrapper>} />
       </Routes>
     </Router>
   )
