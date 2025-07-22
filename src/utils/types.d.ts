@@ -70,3 +70,52 @@ export function validateFileType(file: File, allowedTypes: string[]): string | n
 // Class name utility
 export type ClassValue = string | number | null | undefined | ClassValue[] | { [key: string]: any };
 export function cn(...inputs: ClassValue[]): string;
+
+// Array utilities
+export function chunk<T>(array: T[], size: number): T[][];
+export function flatten<T>(array: T[][]): T[];
+export function unique<T>(array: T[]): T[];
+export function groupBy<T>(array: T[], key: keyof T | ((item: T) => string)): Record<string, T[]>;
+export function sortBy<T>(array: T[], key: keyof T | ((item: T) => any)): T[];
+export function shuffle<T>(array: T[]): T[];
+export function sample<T>(array: T[], count?: number): T | T[];
+export function difference<T>(array1: T[], array2: T[]): T[];
+export function intersection<T>(array1: T[], array2: T[]): T[];
+export function union<T>(array1: T[], array2: T[]): T[];
+
+// String utilities
+export function capitalize(str: string): string;
+export function truncate(str: string, length: number, suffix?: string): string;
+export function slugify(str: string): string;
+export function camelCase(str: string): string;
+export function kebabCase(str: string): string;
+export function snakeCase(str: string): string;
+export function titleCase(str: string): string;
+export function stripHtml(str: string): string;
+export function escapeHtml(str: string): string;
+export function unescapeHtml(str: string): string;
+export function highlight(text: string, search: string, className?: string): string;
+
+// Formatter utilities
+export function formatCurrency(amount: number, currency?: string, locale?: string): string;
+export function formatNumber(num: number, options?: Intl.NumberFormatOptions): string;
+export function formatDate(date: Date | string, format?: string): string;
+export function formatRelativeTime(date: Date | string): string;
+export function formatFileSize(bytes: number, decimals?: number): string;
+export function formatDuration(seconds: number): string;
+export function formatPercentage(value: number, decimals?: number): string;
+export function formatPhoneNumber(phone: string, format?: string): string;
+export function formatCreditCard(cardNumber: string): string;
+
+// Color utilities
+export function hexToRgb(hex: string): { r: number; g: number; b: number } | null;
+export function rgbToHex(r: number, g: number, b: number): string;
+export function hexToHsl(hex: string): { h: number; s: number; l: number } | null;
+export function hslToHex(h: number, s: number, l: number): string;
+export function lighten(color: string, amount: number): string;
+export function darken(color: string, amount: number): string;
+export function getContrastRatio(color1: string, color2: string): number;
+export function isLight(color: string): boolean;
+export function isDark(color: string): boolean;
+export function getRandomColor(): string;
+export function generateColorPalette(baseColor: string, count?: number): string[];
