@@ -17,6 +17,7 @@ A modern, production-ready theme system for React applications featuring Tailwin
 - 📱 **Fully Responsive** - Mobile-first design that works on all devices
 - ⚡ **Performance Optimized** - Lazy loading, code splitting, and optimized builds
 - 🔧 **Easy Customization** - Simple theme configuration with CSS variables
+- 📝 **TypeScript Support** - Full type definitions for better IntelliSense (works with JavaScript too!)
 
 ## 🚀 Quick Start
 
@@ -261,9 +262,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Email: support@yourcompany.com
 - Discord: [Join Community](#)
 
+## 📚 Documentation
+
+- [TypeScript Support](./TYPESCRIPT.md) - Using types for better IntelliSense
+- [Missing Features](./MISSING-FEATURES.md) - Roadmap for market readiness
+- [Examples](./src/examples) - Usage examples and patterns
+
 ## 🚀 Roadmap
 
-- [ ] TypeScript support
+- [x] TypeScript support (via .d.ts files)
 - [ ] Storybook integration
 - [ ] Theme builder tool
 - [ ] Next.js integration guide

@@ -1,36 +1,31 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Switch } from "@/components/ui/switch"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Divider } from "@/components/ui/divider"
-import { 
-  User, 
-  Lock, 
-  Bell, 
-  Shield, 
-  Palette, 
-  Globe, 
-  Smartphone,
-  Mail,
-  AlertCircle,
-  Check,
+import {
+  Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle
+} from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
+import { Switch } from '@/components/ui/switch'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Badge } from '@/components/ui/badge'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Divider } from '@/components/ui/divider'
+import {
+  Bell,
   Camera,
-  Key,
-  LogOut,
-  Trash2,
   Download,
-  Upload
-} from "lucide-react"
-import { useState } from "react"
+  Globe,
+  Lock,
+  LogOut,
+  Palette,
+  Shield,
+  Smartphone,
+  Trash2,
+  User
+} from 'lucide-react'
+import { useState } from 'react'
 
 export default function SettingsProfileLayout() {
   const [emailNotifications, setEmailNotifications] = useState({

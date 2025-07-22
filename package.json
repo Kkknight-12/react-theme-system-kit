@@ -1,8 +1,9 @@
 {
-  "name": "admin-template",
+  "name": "react-theme-system-kit",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "types": "./types.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
