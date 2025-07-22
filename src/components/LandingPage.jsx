@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Check, Sparkles, Palette, Moon, Zap, Code, Smartphone, Shield, ArrowRight, Github, Package, Layers, GitBranch, LayoutDashboard, ShoppingBag, Settings, Download } from "lucide-react"
+import { Check, Sparkles, Palette, Moon, Zap, Code, Smartphone, Shield, ArrowRight, Github, Package, Layers, GitBranch, LayoutDashboard, ShoppingBag, Settings, Download, Users, FileText } from "lucide-react"
 import { Link } from "react-router"
 import { useSettings } from "@/contexts/settings-hooks"
 import { cn } from "@/lib/utils"
@@ -266,11 +266,11 @@ export default function LandingPage() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <Card className="group hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-primary-500/10 flex items-center justify-center mb-4 group-hover:bg-primary-500/20 transition-colors">
-                  <LayoutDashboard className="h-6 w-6 text-primary-500" />
+                <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4 group-hover:bg-blue-500/20 transition-colors">
+                  <LayoutDashboard className="h-6 w-6 text-blue-500" />
                 </div>
                 <CardTitle>Analytics Dashboard</CardTitle>
                 <CardDescription>
@@ -280,89 +280,21 @@ export default function LandingPage() {
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground mb-4">
                   <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary-500" />
+                    <Check className="h-4 w-4 text-blue-500" />
                     Revenue & sales charts
                   </li>
                   <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary-500" />
+                    <Check className="h-4 w-4 text-blue-500" />
                     KPI metric cards
                   </li>
                   <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary-500" />
+                    <Check className="h-4 w-4 text-blue-500" />
                     Recent activity feed
                   </li>
                 </ul>
                 <Button variant="outline" className="w-full" asChild>
                   <Link to="/layouts">
-                    View All Layouts
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-secondary-500/10 flex items-center justify-center mb-4 group-hover:bg-secondary-500/20 transition-colors">
-                  <ShoppingBag className="h-6 w-6 text-secondary-500" />
-                </div>
-                <CardTitle>E-commerce Store</CardTitle>
-                <CardDescription>
-                  Modern product catalog with filters and shopping features
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-secondary-500" />
-                    Product grid & list views
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-secondary-500" />
-                    Advanced filtering
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-secondary-500" />
-                    Shopping cart UI
-                  </li>
-                </ul>
-                <Button variant="outline" className="w-full" asChild>
-                  <Link to="/layouts">
-                    View All Layouts
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center mb-4 group-hover:bg-accent-500/20 transition-colors">
-                  <Settings className="h-6 w-6 text-accent-500" />
-                </div>
-                <CardTitle>Settings & Profile</CardTitle>
-                <CardDescription>
-                  Comprehensive user settings and profile management
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-accent-500" />
-                    Profile management
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-accent-500" />
-                    Security settings
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-accent-500" />
-                    Privacy controls
-                  </li>
-                </ul>
-                <Button variant="outline" className="w-full" asChild>
-                  <Link to="/layouts">
-                    View All Layouts
+                    View Demo
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -372,25 +304,161 @@ export default function LandingPage() {
             <Card className="group hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center mb-4 group-hover:bg-purple-500/20 transition-colors">
-                  <Download className="h-6 w-6 text-purple-500" />
+                  <ShoppingBag className="h-6 w-6 text-purple-500" />
                 </div>
-                <CardTitle>Theme Export</CardTitle>
+                <CardTitle>E-commerce Store</CardTitle>
                 <CardDescription>
-                  Export and import custom themes in multiple formats
+                  Modern product catalog with filters and shopping features
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground mb-4">
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-purple-500" />
-                    Export as JSON, CSS, or JS
+                    Product grid & list views
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-purple-500" />
+                    Advanced filtering
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-purple-500" />
+                    Shopping cart UI
+                  </li>
+                </ul>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/layouts">
+                    View Demo
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center mb-4 group-hover:bg-green-500/20 transition-colors">
+                  <Settings className="h-6 w-6 text-green-500" />
+                </div>
+                <CardTitle>Settings & Profile</CardTitle>
+                <CardDescription>
+                  Comprehensive user settings and profile management
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-green-500" />
+                    Profile management
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-green-500" />
+                    Security settings
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-green-500" />
+                    Privacy controls
+                  </li>
+                </ul>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/layouts">
+                    View Demo
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4 group-hover:bg-orange-500/20 transition-colors">
+                  <Users className="h-6 w-6 text-orange-500" />
+                </div>
+                <CardTitle>SaaS User Management</CardTitle>
+                <CardDescription>
+                  Team administration and user management interface
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-orange-500" />
+                    User list with filters
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-orange-500" />
+                    Role-based access
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-orange-500" />
+                    Activity tracking
+                  </li>
+                </ul>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/layouts">
+                    View Demo
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-pink-500/10 flex items-center justify-center mb-4 group-hover:bg-pink-500/20 transition-colors">
+                  <FileText className="h-6 w-6 text-pink-500" />
+                </div>
+                <CardTitle>Blog & Content</CardTitle>
+                <CardDescription>
+                  Modern blog layout with content management features
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-pink-500" />
+                    Article cards & list
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-pink-500" />
+                    Category filtering
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-pink-500" />
+                    Search functionality
+                  </li>
+                </ul>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/layouts">
+                    View Demo
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center mb-4 group-hover:bg-indigo-500/20 transition-colors">
+                  <Download className="h-6 w-6 text-indigo-500" />
+                </div>
+                <CardTitle>Export Your Theme</CardTitle>
+                <CardDescription>
+                  Save and share your custom theme configurations
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-indigo-500" />
+                    Export as JSON or CSS
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-indigo-500" />
                     Tailwind config export
                   </li>
                   <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-purple-500" />
+                    <Check className="h-4 w-4 text-indigo-500" />
                     Import custom themes
                   </li>
                 </ul>
