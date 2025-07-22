@@ -264,7 +264,7 @@ export default function DashboardLayout() {
                 <div key={index} className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <Avatar className="h-9 w-9">
-                      <AvatarImage src={`/placeholder.svg?height=36&width=36`} alt={sale.name} />
+                      <AvatarImage src={`https://picsum.photos/seed/${sale.name.toLowerCase().replace(' ', '')}/36/36`} alt={sale.name} />
                       <AvatarFallback className="text-xs">{sale.avatar}</AvatarFallback>
                     </Avatar>
                     <div>

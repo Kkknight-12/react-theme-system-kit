@@ -41,7 +41,7 @@ export default function EcommerceLayout() {
       originalPrice: 399.99,
       rating: 4.5,
       reviews: 124,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "https://picsum.photos/seed/headphones/300/300",
       badge: "Best Seller",
       inStock: true
     },
@@ -52,7 +52,7 @@ export default function EcommerceLayout() {
       originalPrice: null,
       rating: 4.8,
       reviews: 89,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "https://picsum.photos/seed/smartwatch/300/300",
       badge: "New",
       inStock: true
     },
@@ -63,7 +63,7 @@ export default function EcommerceLayout() {
       originalPrice: 99.99,
       rating: 4.2,
       reviews: 256,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "https://picsum.photos/seed/speaker/300/300",
       badge: "Sale",
       inStock: true
     },
@@ -74,7 +74,7 @@ export default function EcommerceLayout() {
       originalPrice: null,
       rating: 4.6,
       reviews: 342,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "https://picsum.photos/seed/earbuds/300/300",
       badge: null,
       inStock: false
     },
@@ -85,7 +85,7 @@ export default function EcommerceLayout() {
       originalPrice: 159.99,
       rating: 4.3,
       reviews: 78,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "https://picsum.photos/seed/webcam/300/300",
       badge: "Limited",
       inStock: true
     },
@@ -96,7 +96,7 @@ export default function EcommerceLayout() {
       originalPrice: null,
       rating: 4.7,
       reviews: 521,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "https://picsum.photos/seed/keyboard/300/300",
       badge: null,
       inStock: true
     }
