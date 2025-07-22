@@ -11,9 +11,9 @@ import {
 import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { useSettings } from '@/contexts/SettingsContext';
+import { useSettings } from '@/contexts/settings-hooks';
 
-export default function Header({ onMenuClick, sidebarOpen }) {
+export default function Header({ onMenuClick }) {
   const { onToggleMode } = useSettings();
 
   return (

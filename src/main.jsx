@@ -2,8 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import SettingsContext from './contexts/SettingsContext.jsx'
-const { SettingsProvider } = SettingsContext
+import SettingsProvider from './contexts/SettingsContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

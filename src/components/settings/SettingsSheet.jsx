@@ -1,5 +1,5 @@
 import { Settings, Sun, Moon, Check } from 'lucide-react';
-import { useSettings } from '@/contexts/SettingsContext';
+import { useSettings } from '@/contexts/settings-hooks';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';

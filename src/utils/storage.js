@@ -70,7 +70,7 @@ export function clearStorage() {
 export function getStorageSize() {
   let size = 0;
   for (const key in window.localStorage) {
-    if (window.localStorage.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(window.localStorage, key)) {
       size += window.localStorage[key].length + key.length;
     }
   }

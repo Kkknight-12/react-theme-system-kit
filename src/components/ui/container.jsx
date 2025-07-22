@@ -66,4 +66,4 @@ const Section = React.forwardRef(
 
 Section.displayName = 'Section';
 
-export { Container, Section, containerVariants };
+export { Container, Section };

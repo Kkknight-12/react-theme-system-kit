@@ -5,40 +5,7 @@
 import { themePresets } from '../config/themePresets';
 import convert from 'color-convert';
 
-/**
- * Get appropriate contrast color (white or black) for a given background
- * @param {string} hex - Hex color code
- * @returns {string} OKLCH color for text
- */
-function getContrastColor(hex) {
-  if (!hex) return 'oklch(0.985 0 0)'; // Default to white
-
-  // Simple luminance check - in production, use proper WCAG contrast calculation
-  const rgb = parseInt(hex.slice(1), 16);
-  const r = (rgb >> 16) & 0xff;
-  const g = (rgb >> 8) & 0xff;
-  const b = rgb & 0xff;
-  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-
-  // Return white for dark colors, dark for light colors
-  return luminance > 0.5 ? 'oklch(0.13 0.02 264)' : 'oklch(0.985 0 0)';
-}
-
-/**
- * Simple hex to RGB conversion
- * @param {string} hex - Hex color code
- * @returns {object} RGB values
- */
-function hexToRgb(hex) {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? {
-        r: parseInt(result[1], 16) / 255,
-        g: parseInt(result[2], 16) / 255,
-        b: parseInt(result[3], 16) / 255,
-      }
-    : null;
-}
+// Removed unused functions getContrastColor and hexToRgb
 
 /**
  * Extract OKLCH hue from hex color using color-convert
@@ -52,7 +19,7 @@ function getHueFromHex(hex) {
     
     // Convert hex to OKLCH
     // color-convert uses scales: L (0-100), C (0-32), H (0-360)
-    const [l, c, h] = convert.hex.oklch(cleanHex);
+    const [, , h] = convert.hex.oklch(cleanHex);
     
     // Return the hue value (already in 0-360 range)
     return h || 0;
@@ -106,7 +73,7 @@ function hexToOklch(hex) {
     '#c084fc': 'oklch(0.714 0.203 305)',
     '#a855f7': 'oklch(0.627 0.265 303)',
     '#9333ea': 'oklch(0.558 0.288 302)',
-    '#7c3aed': 'oklch(0.496 0.265 301)',
+    '#7c3aed': 'oklch(0.496 0.265 301)', // Purple-700
     '#6b21a8': 'oklch(0.438 0.218 303)',
     '#581c87': 'oklch(0.381 0.176 304)',
     '#3b0764': 'oklch(0.291 0.149 302)',
@@ -235,7 +202,7 @@ function hexToOklch(hex) {
     '#c4b5fd': 'oklch(0.841 0.116 293)',
     '#a78bfa': 'oklch(0.739 0.187 293)',
     '#8b5cf6': 'oklch(0.631 0.249 293)',
-    '#7c3aed': 'oklch(0.555 0.263 294)',
+    // '#7c3aed' already defined in Purple theme above
     '#6d28d9': 'oklch(0.487 0.252 294)',
     '#5b21b6': 'oklch(0.425 0.221 295)',
     '#4c1d95': 'oklch(0.374 0.183 296)',
@@ -293,8 +260,6 @@ const themeCache = new Map();
 export function applyTheme(themeName) {
   const preset = themePresets[themeName];
   if (!preset) return;
-
-  const root = document.documentElement;
 
   // Remove theme initialization styles if they exist
   const criticalStyles = document.getElementById('theme-critical');

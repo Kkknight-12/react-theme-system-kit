@@ -1,6 +1,5 @@
 import {
   createContext,
-  useContext,
   useEffect,
   useReducer,
   useMemo,
@@ -86,41 +85,8 @@ function settingsReducer(state, action) {
 const SettingsStateContext = createContext(null);
 const SettingsActionsContext = createContext(null);
 
-/**
- * Custom hook to use settings state
- * @returns {Object} Settings state
- * @throws {Error} When used outside of SettingsProvider
- */
-export const useSettingsState = () => {
-  const context = useContext(SettingsStateContext);
-  if (!context) {
-    throw new Error('useSettingsState must be used within SettingsProvider');
-  }
-  return context;
-};
-
-/**
- * Custom hook to use settings actions
- * @returns {Object} Settings actions
- * @throws {Error} When used outside of SettingsProvider
- */
-export const useSettingsActions = () => {
-  const context = useContext(SettingsActionsContext);
-  if (!context) {
-    throw new Error('useSettingsActions must be used within SettingsProvider');
-  }
-  return context;
-};
-
-/**
- * Combined hook for backward compatibility
- * @returns {Object} Settings state and actions
- */
-export const useSettings = () => {
-  const state = useSettingsState();
-  const actions = useSettingsActions();
-  return { ...state, ...actions };
-};
+// Export contexts for use in hooks file
+export { SettingsStateContext, SettingsActionsContext };
 
 /**
  * Initialize settings from localStorage
@@ -181,7 +147,7 @@ export function SettingsProvider({ children }) {
     };
 
     syncInitialMode();
-  }, []); // Only run once on mount
+  }, [state.themeMode]); // Re-sync if themeMode changes
 
   // Save settings to localStorage whenever they change
   useEffect(() => {
@@ -311,10 +277,5 @@ export function SettingsProvider({ children }) {
   );
 }
 
-// Export everything for convenience
-export default {
-  SettingsProvider,
-  useSettings,
-  useSettingsState,
-  useSettingsActions,
-};
+// Export just the provider
+export default SettingsProvider;

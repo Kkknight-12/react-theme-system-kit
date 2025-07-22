@@ -28,7 +28,7 @@ export function isValidUrl(url) {
  * @returns {boolean} Is valid
  */
 export function isValidPhone(phone) {
-  const regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{4,6}$/;
+  const regex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{4,6}$/;
   return regex.test(phone);
 }
 

@@ -86,4 +86,4 @@ const VStack = React.forwardRef((props, ref) => (
 ));
 VStack.displayName = 'VStack';
 
-export { Stack, HStack, VStack, stackVariants };
+export { Stack, HStack, VStack };

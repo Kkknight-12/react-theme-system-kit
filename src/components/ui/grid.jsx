@@ -90,4 +90,4 @@ const GridItem = React.forwardRef(
 
 GridItem.displayName = 'GridItem';
 
-export { Grid, GridItem, gridVariants };
+export { Grid, GridItem };

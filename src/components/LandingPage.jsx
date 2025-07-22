@@ -4,8 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Check, Sparkles, Palette, Moon, Zap, Code, Smartphone, Shield, ArrowRight, Github, Package, Layers, GitBranch, LayoutDashboard, ShoppingBag, Settings } from "lucide-react"
 import { Link } from "react-router-dom"
-import SettingsContext from "@/contexts/SettingsContext"
-const { useSettings } = SettingsContext
+import { useSettings } from "@/contexts/settings-hooks"
 import { cn } from "@/lib/utils"
 
 const features = [
@@ -95,7 +94,7 @@ const pricing = [
 ]
 
 export default function LandingPage() {
-  const { themePreset, onChangeColor, themeMode } = useSettings()
+  const { themePreset, onChangeColor } = useSettings()
 
   return (
     <div className="min-h-screen bg-background">

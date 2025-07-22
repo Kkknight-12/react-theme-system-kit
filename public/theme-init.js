@@ -11,7 +11,7 @@
         const parsed = JSON.parse(settings);
         isDark = parsed.themeMode === 'dark';
         themePreset = parsed.themePreset || 'default';
-      } catch (e) {
+      } catch {
         isDark = localStorage.getItem('dark-mode') === 'true';
         themePreset = localStorage.getItem('theme-preset') || 'default';
       }
@@ -59,5 +59,7 @@
       }
     `;
     document.head.appendChild(style);
-  } catch (e) {}
+  } catch {
+    // Silently fail if theme initialization fails
+  }
 })();

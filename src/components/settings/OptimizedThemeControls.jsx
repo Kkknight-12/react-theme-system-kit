@@ -1,4 +1,4 @@
-import { useSettingsActions, useSettingsState, useSettings } from '@/contexts/SettingsContext';
+import { useSettingsActions, useSettingsState, useSettings } from '@/contexts/settings-hooks';
 import { Button } from '@/components/ui/button';
 import { Sun, Moon, Palette, Layout, Maximize2, Type } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -195,7 +195,6 @@ export function SettingsPanel() {
     themeLayout,
     themeContrast,
     onChangeMode, 
-    onChangeColor,
     onChangeStretch,
     onChangeLayout,
     onChangeContrast

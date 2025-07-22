@@ -83,4 +83,4 @@ const SpinnerOverlay = React.forwardRef(
 
 SpinnerOverlay.displayName = 'SpinnerOverlay';
 
-export { Spinner, SpinnerOverlay, spinnerVariants };
+export { Spinner, SpinnerOverlay };

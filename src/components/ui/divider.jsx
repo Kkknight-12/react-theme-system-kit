@@ -56,4 +56,4 @@ const Divider = React.forwardRef(
 
 Divider.displayName = 'Divider';
 
-export { Divider, dividerVariants };
+export { Divider };
