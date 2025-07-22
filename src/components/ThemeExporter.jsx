@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Download, Upload, Copy, Check, FileJson, FileCode, Palette } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
-import { Input } from '@/components/ui/Input';
-import { Label } from '@/components/ui/Label';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group.jsx';
 import { toast } from   "sonner"
 import { 
@@ -12,7 +12,7 @@ import {
   importThemeFromFile,
   generateThemePreview 
 } from '@/utils/theme-export';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/Dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 export function ThemeExporter() {
   const [themeName, setThemeName] = useState('my-custom-theme');

@@ -1,6 +1,6 @@
 import { useSettings } from '@/contexts/settings-hooks';
-import { Button } from '@/components/ui/Button';
-import { Label } from '@/components/ui/Label';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Switch } from '@/components/ui/switch';
 import { Sun, Moon } from 'lucide-react';

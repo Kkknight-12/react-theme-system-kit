@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Settings2, Download, Code, Palette, FileCode } from 'lucide-react';
-import { Container } from '@/components/ui/Container';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import { Container } from '@/components/ui/container';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ThemeExporter } from '@/components/ThemeExporter';
 import { ThemeCustomizer } from '@/components/ThemeCustomizer';
-import { Alert, AlertDescription } from '@/components/ui/Alert';
-import { Badge } from '@/components/ui/Badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Badge } from '@/components/ui/badge';
 import { 
   exportThemeAsJSON, 
   exportThemeAsCSS, 
