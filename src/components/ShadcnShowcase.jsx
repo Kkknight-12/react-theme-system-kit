@@ -24,7 +24,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Divider as Separator } from "@/components/ui/divider"
 import { toast } from "sonner"
-import { AlertCircle, Terminal, Zap, Sparkles, ChevronRight, User, Settings, LogOut, ChevronDown, Info, Menu, CalendarDays } from "lucide-react"
+import { AlertCircle, Terminal, Zap, Sparkles, ChevronRight, User, Settings, LogOut, ChevronDown, Info, Navigation, CalendarDays } from "lucide-react"
 import { useState, useEffect } from "react"
 
 export default function ShadcnShowcase() {
@@ -68,7 +68,7 @@ export default function ShadcnShowcase() {
         {/* Navigation Components */}
         <section>
           <h2 className="text-3xl font-bold mb-6 text-foreground flex items-center gap-2">
-            <Menu className="h-8 w-8 text-primary-500" />
+            <Navigation className="h-8 w-8 text-primary-500" />
             Navigation
           </h2>
           
