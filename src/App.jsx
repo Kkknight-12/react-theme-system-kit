@@ -6,6 +6,7 @@ import LandingPage from '@/components/LandingPage.jsx'
 import DashboardLayout from '@/components/layouts/DashboardLayout.jsx'
 import EcommerceLayout from '@/components/layouts/EcommerceLayout.jsx'
 import SettingsProfileLayout from '@/components/layouts/SettingsProfileLayout.jsx'
+import ThemeExport from '@/pages/ThemeExport.jsx'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ArrowLeft } from 'lucide-react'
 import './App.css'
@@ -26,6 +27,7 @@ function Navigation() {
           <Link to="/dashboard" className={`text-sm ${location.pathname === '/dashboard' ? 'font-medium text-primary-500' : 'hover:text-primary-500'}`}>Dashboard</Link>
           <Link to="/ecommerce" className={`text-sm ${location.pathname === '/ecommerce' ? 'font-medium text-primary-500' : 'hover:text-primary-500'}`}>E-commerce</Link>
           <Link to="/settings" className={`text-sm ${location.pathname === '/settings' ? 'font-medium text-primary-500' : 'hover:text-primary-500'}`}>Settings</Link>
+          <Link to="/export" className={`text-sm ${location.pathname === '/export' ? 'font-medium text-primary-500' : 'hover:text-primary-500'}`}>Export</Link>
         </div>
       </div>
     </div>
@@ -59,10 +61,10 @@ function DemoPage() {
 }
 
 // Layout wrapper with theme controls
-function LayoutWrapper({ children }) {
+function LayoutWrapper({ children, showSettings = true }) {
   return (
     <div className="min-h-screen bg-background">
-      <SettingsSheet />
+      {showSettings && <SettingsSheet />}
       <Navigation />
       {children}
     </div>
@@ -78,6 +80,7 @@ function App() {
         <Route path="/dashboard" element={<LayoutWrapper><DashboardLayout /></LayoutWrapper>} />
         <Route path="/ecommerce" element={<LayoutWrapper><EcommerceLayout /></LayoutWrapper>} />
         <Route path="/settings" element={<LayoutWrapper><SettingsProfileLayout /></LayoutWrapper>} />
+        <Route path="/export" element={<LayoutWrapper showSettings={false}><ThemeExport /></LayoutWrapper>} />
       </Routes>
     </Router>
   )

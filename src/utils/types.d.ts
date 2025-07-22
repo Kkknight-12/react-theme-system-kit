@@ -119,3 +119,30 @@ export function isLight(color: string): boolean;
 export function isDark(color: string): boolean;
 export function getRandomColor(): string;
 export function generateColorPalette(baseColor: string, count?: number): string[];
+
+// Theme export utilities
+export interface ThemeConfig {
+  mode: 'light' | 'dark';
+  cssVars: Record<string, string>;
+  radius?: string;
+}
+
+export interface ThemeExport {
+  name: string;
+  label: string;
+  cssVars: {
+    light: Record<string, string>;
+    dark: Record<string, string>;
+  };
+}
+
+export function getCurrentThemeConfig(): ThemeConfig;
+export function exportThemeAsJSON(name?: string, label?: string): ThemeExport;
+export function exportThemeAsCSS(themeName?: string): string;
+export function exportThemeAsTailwind(): string;
+export function exportThemeAsModule(name?: string): string;
+export function downloadFile(content: string, filename: string, type?: string): void;
+export function exportTheme(format?: 'json' | 'css' | 'tailwind' | 'module', themeName?: string): void;
+export function importThemeFromJSON(themeData: ThemeExport): ThemeExport;
+export function importThemeFromFile(file: File): Promise<ThemeExport>;
+export function generateThemePreview(theme: ThemeExport): string;

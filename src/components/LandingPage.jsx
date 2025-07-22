@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Check, Sparkles, Palette, Moon, Zap, Code, Smartphone, Shield, ArrowRight, Github, Package, Layers, GitBranch, LayoutDashboard, ShoppingBag, Settings } from "lucide-react"
+import { Check, Sparkles, Palette, Moon, Zap, Code, Smartphone, Shield, ArrowRight, Github, Package, Layers, GitBranch, LayoutDashboard, ShoppingBag, Settings, Download } from "lucide-react"
 import { Link } from "react-router-dom"
 import { useSettings } from "@/contexts/settings-hooks"
 import { cn } from "@/lib/utils"
@@ -266,7 +266,7 @@ export default function LandingPage() {
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
             <Card className="group hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 rounded-lg bg-primary-500/10 flex items-center justify-center mb-4 group-hover:bg-primary-500/20 transition-colors">
@@ -363,6 +363,40 @@ export default function LandingPage() {
                 <Button variant="outline" className="w-full" asChild>
                   <Link to="/settings">
                     View Settings
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center mb-4 group-hover:bg-purple-500/20 transition-colors">
+                  <Download className="h-6 w-6 text-purple-500" />
+                </div>
+                <CardTitle>Theme Export</CardTitle>
+                <CardDescription>
+                  Export and import custom themes in multiple formats
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-purple-500" />
+                    Export as JSON, CSS, or JS
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-purple-500" />
+                    Tailwind config export
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-purple-500" />
+                    Import custom themes
+                  </li>
+                </ul>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/export">
+                    Export Theme
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
