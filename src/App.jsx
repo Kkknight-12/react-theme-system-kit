@@ -39,10 +39,12 @@ function DemoPage() {
 // Layouts Page
 function LayoutsPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex flex-col h-screen bg-background overflow-hidden">
       <SettingsSheet />
       <Navigation />
-      <LayoutShowcase />
+      <div className="flex-1 overflow-hidden">
+        <LayoutShowcase />
+      </div>
     </div>
   )
 }

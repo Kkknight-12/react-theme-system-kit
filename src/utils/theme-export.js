@@ -3,6 +3,7 @@
  */
 
 import { themePresets } from '@/config/themePresets.js';
+import { applyTheme } from './theme';
 
 /**
  * Get current theme configuration from CSS variables
@@ -238,7 +239,6 @@ export async function importThemeFromJSON(themeData) {
     themePresets[themeData.name] = themeData;
     
     // Apply the theme using the theme utility
-    const { applyTheme } = await import('./theme');
     applyTheme(themeData.name);
     
     // Save theme name
