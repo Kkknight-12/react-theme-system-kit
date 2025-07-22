@@ -6,6 +6,8 @@ import LandingPage from '@/components/LandingPage.jsx'
 import DashboardLayout from '@/components/layouts/DashboardLayout.jsx'
 import EcommerceLayout from '@/components/layouts/EcommerceLayout.jsx'
 import SettingsProfileLayout from '@/components/layouts/SettingsProfileLayout.jsx'
+import SaasUsersLayout from '@/components/layouts/SaasUsersLayout.jsx'
+import BlogLayout from '@/components/layouts/BlogLayout.jsx'
 import ThemeExport from '@/pages/ThemeExport.jsx'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { 
@@ -24,7 +26,7 @@ import './App.css'
 function Navigation() {
   const location = useLocation()
   
-  const isLayoutPath = ['/dashboard', '/ecommerce', '/settings'].includes(location.pathname)
+  const isLayoutPath = ['/dashboard', '/ecommerce', '/settings', '/users', '/blog'].includes(location.pathname)
   
   return (
     <div className="border-b">
@@ -67,6 +69,18 @@ function Navigation() {
                 <Link to="/settings" className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded bg-accent-500/20" />
                   Settings & Profile
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/users" className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded bg-purple-500/20" />
+                  SaaS User Management
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/blog" className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded bg-green-500/20" />
+                  Blog & Content
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -128,6 +142,8 @@ function App() {
         <Route path="/dashboard" element={<LayoutWrapper><DashboardLayout /></LayoutWrapper>} />
         <Route path="/ecommerce" element={<LayoutWrapper><EcommerceLayout /></LayoutWrapper>} />
         <Route path="/settings" element={<LayoutWrapper><SettingsProfileLayout /></LayoutWrapper>} />
+        <Route path="/users" element={<LayoutWrapper><SaasUsersLayout /></LayoutWrapper>} />
+        <Route path="/blog" element={<LayoutWrapper><BlogLayout /></LayoutWrapper>} />
         <Route path="/export" element={<LayoutWrapper showSettings={false}><ThemeExport /></LayoutWrapper>} />
       </Routes>
     </Router>
