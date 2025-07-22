@@ -1,5 +1,5 @@
 import { Info } from 'lucide-react';
-import { Alert, AlertDescription } from '@/components/ui/Alert';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 export function LayoutBanner({ title, description }) {
   return (

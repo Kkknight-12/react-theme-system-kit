@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Check, Sparkles, Palette, Moon, Zap, Code, Smartphone, Shield, ArrowRight, Github, Package, Layers, GitBranch, LayoutDashboard, ShoppingBag, Settings, Download } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Link } from "react-router"
 import { useSettings } from "@/contexts/settings-hooks"
 import { cn } from "@/lib/utils"
 
@@ -293,8 +293,8 @@ export default function LandingPage() {
                   </li>
                 </ul>
                 <Button variant="outline" className="w-full" asChild>
-                  <Link to="/dashboard">
-                    View Dashboard
+                  <Link to="/layouts">
+                    View All Layouts
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -327,8 +327,8 @@ export default function LandingPage() {
                   </li>
                 </ul>
                 <Button variant="outline" className="w-full" asChild>
-                  <Link to="/ecommerce">
-                    View E-commerce
+                  <Link to="/layouts">
+                    View All Layouts
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -361,8 +361,8 @@ export default function LandingPage() {
                   </li>
                 </ul>
                 <Button variant="outline" className="w-full" asChild>
-                  <Link to="/settings">
-                    View Settings
+                  <Link to="/layouts">
+                    View All Layouts
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
