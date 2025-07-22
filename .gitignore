@@ -26,9 +26,10 @@ __tests__/
 coverage/
 .nyc_output/
 
-# Markdown files (except README.md)
+# Markdown files (except README.md and COMPONENTS.md)
 *.md
 !README.md
+!COMPONENTS.md
 
 # Build outputs
 dist/
