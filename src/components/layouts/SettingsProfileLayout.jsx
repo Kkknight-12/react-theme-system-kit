@@ -115,7 +115,7 @@ export default function SettingsProfileLayout() {
                       {/* Avatar */}
                       <div className="flex items-center gap-6">
                         <Avatar className="h-24 w-24">
-                          <AvatarImage src="https://picsum.photos/seed/johndoe/96/96" alt="Profile" />
+                          <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&h=96&fit=crop&q=80" alt="Profile" />
                           <AvatarFallback>JD</AvatarFallback>
                         </Avatar>
                         <div className="space-y-2">

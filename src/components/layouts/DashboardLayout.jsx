@@ -61,11 +61,11 @@ export default function DashboardLayout() {
   ]
 
   const recentSales = [
-    { name: "Olivia Martin", email: "olivia.martin@email.com", amount: "$1,999.00", avatar: "OM" },
-    { name: "Jackson Lee", email: "jackson.lee@email.com", amount: "$1,299.00", avatar: "JL" },
-    { name: "Isabella Nguyen", email: "isabella@email.com", amount: "$899.00", avatar: "IN" },
-    { name: "William Kim", email: "will@email.com", amount: "$699.00", avatar: "WK" },
-    { name: "Sofia Davis", email: "sofia.davis@email.com", amount: "$399.00", avatar: "SD" }
+    { name: "Olivia Martin", email: "olivia.martin@email.com", amount: "$1,999.00", avatar: "OM", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=36&h=36&fit=crop&q=80" },
+    { name: "Jackson Lee", email: "jackson.lee@email.com", amount: "$1,299.00", avatar: "JL", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=36&h=36&fit=crop&q=80" },
+    { name: "Isabella Nguyen", email: "isabella@email.com", amount: "$899.00", avatar: "IN", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=36&h=36&fit=crop&q=80" },
+    { name: "William Kim", email: "will@email.com", amount: "$699.00", avatar: "WK", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=36&h=36&fit=crop&q=80" },
+    { name: "Sofia Davis", email: "sofia.davis@email.com", amount: "$399.00", avatar: "SD", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=36&h=36&fit=crop&q=80" }
   ]
 
   // Generate chart data based on time range
@@ -264,7 +264,7 @@ export default function DashboardLayout() {
                 <div key={index} className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <Avatar className="h-9 w-9">
-                      <AvatarImage src={`https://picsum.photos/seed/${sale.name.toLowerCase().replace(' ', '')}/36/36`} alt={sale.name} />
+                      <AvatarImage src={sale.image} alt={sale.name} />
                       <AvatarFallback className="text-xs">{sale.avatar}</AvatarFallback>
                     </Avatar>
                     <div>
