@@ -26,6 +26,7 @@ import {
   User
 } from 'lucide-react'
 import { useState } from 'react'
+import { LayoutBanner } from '@/components/LayoutBanner'
 
 export default function SettingsProfileLayout() {
   const [emailNotifications, setEmailNotifications] = useState({
@@ -47,6 +48,12 @@ export default function SettingsProfileLayout() {
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
+          {/* Example Layout Banner */}
+          <LayoutBanner 
+            title="Settings & Profile" 
+            description="form controls, tabs, and user preferences"
+          />
+          
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-3xl font-bold tracking-tight">Account Settings</h1>

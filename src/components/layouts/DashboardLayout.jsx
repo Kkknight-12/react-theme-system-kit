@@ -20,6 +20,7 @@ import {
   Download
 } from "lucide-react"
 import { useState } from "react"
+import { LayoutBanner } from "@/components/LayoutBanner"
 
 export default function DashboardLayout() {
   const [timeRange, setTimeRange] = useState("7d")
@@ -129,6 +130,12 @@ export default function DashboardLayout() {
 
   return (
     <div className="min-h-screen bg-background p-6 md:p-8">
+      {/* Example Layout Banner */}
+      <LayoutBanner 
+        title="Dashboard Analytics" 
+        description="charts, stats, and data visualization components"
+      />
+      
       {/* Header */}
       <div className="mb-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">

@@ -8,12 +8,23 @@ import EcommerceLayout from '@/components/layouts/EcommerceLayout.jsx'
 import SettingsProfileLayout from '@/components/layouts/SettingsProfileLayout.jsx'
 import ThemeExport from '@/pages/ThemeExport.jsx'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ArrowLeft } from 'lucide-react'
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button"
+import { ArrowLeft, ChevronDown, Layout, FileCode, Download } from 'lucide-react'
 import './App.css'
 
 // Shared Navigation Component
 function Navigation() {
   const location = useLocation()
+  
+  const isLayoutPath = ['/dashboard', '/ecommerce', '/settings'].includes(location.pathname)
   
   return (
     <div className="border-b">
@@ -23,11 +34,48 @@ function Navigation() {
           Back to Home
         </Link>
         <div className="flex items-center gap-4">
-          <Link to="/demo" className={`text-sm ${location.pathname === '/demo' ? 'font-medium text-primary-500' : 'hover:text-primary-500'}`}>Components</Link>
-          <Link to="/dashboard" className={`text-sm ${location.pathname === '/dashboard' ? 'font-medium text-primary-500' : 'hover:text-primary-500'}`}>Dashboard</Link>
-          <Link to="/ecommerce" className={`text-sm ${location.pathname === '/ecommerce' ? 'font-medium text-primary-500' : 'hover:text-primary-500'}`}>E-commerce</Link>
-          <Link to="/settings" className={`text-sm ${location.pathname === '/settings' ? 'font-medium text-primary-500' : 'hover:text-primary-500'}`}>Settings</Link>
-          <Link to="/export" className={`text-sm ${location.pathname === '/export' ? 'font-medium text-primary-500' : 'hover:text-primary-500'}`}>Export</Link>
+          <Link to="/demo" className={`text-sm flex items-center gap-1 ${location.pathname === '/demo' ? 'font-medium text-primary-500' : 'hover:text-primary-500'}`}>
+            <FileCode className="h-4 w-4" />
+            Components
+          </Link>
+          
+          {/* Example Layouts Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant={isLayoutPath ? "default" : "ghost"} size="sm" className="gap-1">
+                <Layout className="h-4 w-4" />
+                Example Layouts
+                <ChevronDown className="h-3 w-3" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Sample Layouts</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link to="/dashboard" className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded bg-primary-500/20" />
+                  Dashboard Analytics
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/ecommerce" className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded bg-secondary-500/20" />
+                  E-commerce Store
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/settings" className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded bg-accent-500/20" />
+                  Settings & Profile
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          
+          <Link to="/export" className={`text-sm flex items-center gap-1 ${location.pathname === '/export' ? 'font-medium text-primary-500' : 'hover:text-primary-500'}`}>
+            <Download className="h-4 w-4" />
+            Theme Export
+          </Link>
         </div>
       </div>
     </div>

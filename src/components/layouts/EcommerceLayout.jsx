@@ -24,6 +24,7 @@ import {
 } from "lucide-react"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { LayoutBanner } from "@/components/LayoutBanner"
 
 // Product Image Component with loading state
 function ProductImage({ src, alt, className }) {
@@ -164,6 +165,14 @@ export default function EcommerceLayout() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Example Layout Banner */}
+      <div className="container mx-auto px-4 pt-6">
+        <LayoutBanner 
+          title="E-commerce Store" 
+          description="product listings, filters, and shopping cart components"
+        />
+      </div>
+      
       {/* Header */}
       <div className="border-b">
         <div className="container mx-auto px-4 py-6">
