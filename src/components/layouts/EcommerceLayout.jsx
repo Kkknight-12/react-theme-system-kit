@@ -23,6 +23,43 @@ import {
   RotateCcw
 } from "lucide-react"
 import { useState } from "react"
+import { cn } from "@/lib/utils"
+
+// Product Image Component with loading state
+function ProductImage({ src, alt, className }) {
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  return (
+    <div className="relative w-full h-64 bg-muted">
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="animate-pulse bg-muted-foreground/20 w-full h-full" />
+        </div>
+      )}
+      {error ? (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Package className="h-12 w-12 text-muted-foreground" />
+        </div>
+      ) : (
+        <img
+          src={src}
+          alt={alt}
+          className={cn(
+            "w-full h-full object-cover transition-all duration-300",
+            loading && "opacity-0",
+            className
+          )}
+          onLoad={() => setLoading(false)}
+          onError={() => {
+            setLoading(false)
+            setError(true)
+          }}
+        />
+      )}
+    </div>
+  )
+}
 
 export default function EcommerceLayout() {
   const [viewMode, setViewMode] = useState('grid')
@@ -41,7 +78,7 @@ export default function EcommerceLayout() {
       originalPrice: 399.99,
       rating: 4.5,
       reviews: 124,
-      image: "https://picsum.photos/seed/headphones/300/300",
+      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop",
       badge: "Best Seller",
       inStock: true
     },
@@ -52,7 +89,7 @@ export default function EcommerceLayout() {
       originalPrice: null,
       rating: 4.8,
       reviews: 89,
-      image: "https://picsum.photos/seed/smartwatch/300/300",
+      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop",
       badge: "New",
       inStock: true
     },
@@ -63,7 +100,7 @@ export default function EcommerceLayout() {
       originalPrice: 99.99,
       rating: 4.2,
       reviews: 256,
-      image: "https://picsum.photos/seed/speaker/300/300",
+      image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=300&h=300&fit=crop",
       badge: "Sale",
       inStock: true
     },
@@ -74,7 +111,7 @@ export default function EcommerceLayout() {
       originalPrice: null,
       rating: 4.6,
       reviews: 342,
-      image: "https://picsum.photos/seed/earbuds/300/300",
+      image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300&h=300&fit=crop",
       badge: null,
       inStock: false
     },
@@ -85,7 +122,7 @@ export default function EcommerceLayout() {
       originalPrice: 159.99,
       rating: 4.3,
       reviews: 78,
-      image: "https://picsum.photos/seed/webcam/300/300",
+      image: "https://images.unsplash.com/photo-1598986646512-9330bcc4c0dc?w=300&h=300&fit=crop",
       badge: "Limited",
       inStock: true
     },
@@ -96,7 +133,7 @@ export default function EcommerceLayout() {
       originalPrice: null,
       rating: 4.7,
       reviews: 521,
-      image: "https://picsum.photos/seed/keyboard/300/300",
+      image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300&h=300&fit=crop",
       badge: null,
       inStock: true
     }
@@ -306,18 +343,18 @@ export default function EcommerceLayout() {
             <div className={`grid gap-6 ${viewMode === 'grid' ? 'sm:grid-cols-2 md:grid-cols-3' : 'grid-cols-1'}`}>
               {products.map((product) => (
                 <Card key={product.id} className="overflow-hidden group">
-                  <div className="relative">
-                    <img 
+                  <div className="relative overflow-hidden">
+                    <ProductImage 
                       src={product.image} 
                       alt={product.name}
-                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="group-hover:scale-105"
                     />
                     {product.badge && (
-                      <Badge className="absolute top-3 left-3" variant={product.badge === 'Sale' ? 'destructive' : 'default'}>
+                      <Badge className="absolute top-3 left-3 z-10" variant={product.badge === 'Sale' ? 'destructive' : 'default'}>
                         {product.badge}
                       </Badge>
                     )}
-                    <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                       <Button size="sm" variant="secondary" className="h-8 w-8 p-0 rounded-full">
                         <Heart className="h-4 w-4" />
                       </Button>
