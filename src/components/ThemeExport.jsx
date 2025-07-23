@@ -25,11 +25,11 @@ export default function ThemeExport() {
 
   return (
     <Container>
-      <div className="py-8 space-y-8">
+      <div className="py-4 sm:py-8 space-y-6 sm:space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">Theme Export</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Theme Export</h1>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Export your customized theme in various formats for use in other projects
           </p>
         </div>

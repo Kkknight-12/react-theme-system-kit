@@ -35,8 +35,8 @@ const features = [
   },
   {
     icon: Smartphone,
-    title: "Fully Responsive",
-    description: "Mobile-first design that works on all devices"
+    title: "Responsive Design",
+    description: "Optimized layouts that adapt to different screen sizes"
   }
 ]
 

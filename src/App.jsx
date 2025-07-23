@@ -16,11 +16,11 @@ function DemoPage() {
       <SettingsSheet />
       <Navigation />
       
-      <div className="container mx-auto py-8">
+      <div className="container mx-auto px-4 py-4 sm:py-8">
         <Tabs defaultValue={"custom"} className="w-full space-y-6">
-          <TabsList className='w-full'>
-            <TabsTrigger value="custom">Custom Components</TabsTrigger>
-            <TabsTrigger value="shadcn">Shadcn Components</TabsTrigger>
+          <TabsList className='w-full max-w-md mx-auto grid grid-cols-2'>
+            <TabsTrigger value="custom" className="text-xs sm:text-sm">Custom Components</TabsTrigger>
+            <TabsTrigger value="shadcn" className="text-xs sm:text-sm">Shadcn Components</TabsTrigger>
           </TabsList>
 
           <TabsContent value="custom">
