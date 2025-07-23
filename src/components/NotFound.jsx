@@ -317,56 +317,6 @@ export default function NotFound() {
         </div>
       </div>
 
-      {/* Add custom animation styles */}
-      <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 0.2;
-          }
-          25% {
-            transform: translateY(-20px) rotate(5deg);
-            opacity: 0.3;
-          }
-          50% {
-            transform: translateY(10px) rotate(-5deg);
-            opacity: 0.2;
-          }
-          75% {
-            transform: translateY(-10px) rotate(3deg);
-            opacity: 0.25;
-          }
-        }
-
-        @keyframes sparkle {
-          0%,
-          100% {
-            opacity: 0;
-            transform: scale(0) rotate(0deg);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1) rotate(180deg);
-          }
-        }
-
-        .animate-float {
-          animation: float ease-in-out infinite;
-        }
-
-        .animate-sparkle {
-          animation: sparkle 2s ease-in-out infinite;
-        }
-
-        .bg-gradient-radial {
-          background: radial-gradient(
-            circle at center,
-            transparent 0%,
-            var(--tw-gradient-to) 100%
-          );
-        }
-      `}</style>
     </div>
   );
 }
