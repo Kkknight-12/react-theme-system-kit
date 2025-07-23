@@ -11,7 +11,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { Divider } from '@/components/ui/divider'
+import { Separator } from '@/components/ui/separator'
 import {
   Bell,
   Camera,
@@ -88,7 +88,7 @@ export default function SettingsProfileLayout() {
                   <Globe className="mr-2 h-4 w-4" />
                   Language
                 </Button>
-                <Divider className="my-4" />
+                <Separator className="my-4" />
                 <Button variant="ghost" className="w-full justify-start text-destructive" size="sm">
                   <LogOut className="mr-2 h-4 w-4" />
                   Sign Out
@@ -129,7 +129,7 @@ export default function SettingsProfileLayout() {
                         </div>
                       </div>
 
-                      <Divider />
+                      <Separator />
 
                       {/* Form Fields */}
                       <div className="grid gap-4 sm:grid-cols-2">
@@ -183,7 +183,7 @@ export default function SettingsProfileLayout() {
                         </div>
                         <Button variant="outline" size="sm">Disconnect</Button>
                       </div>
-                      <Divider />
+                      <Separator />
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <div className="h-10 w-10 rounded-full bg-black flex items-center justify-center text-white font-bold">GH</div>
@@ -269,7 +269,7 @@ export default function SettingsProfileLayout() {
                           </div>
                           <Badge variant="secondary">Active</Badge>
                         </div>
-                        <Divider />
+                        <Separator />
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-3">
                             <Smartphone className="h-8 w-8 text-muted-foreground" />
@@ -303,7 +303,7 @@ export default function SettingsProfileLayout() {
                           onCheckedChange={(checked) => setEmailNotifications({...emailNotifications, marketing: checked})}
                         />
                       </div>
-                      <Divider />
+                      <Separator />
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
                           <p className="font-medium">Product Updates</p>
@@ -314,7 +314,7 @@ export default function SettingsProfileLayout() {
                           onCheckedChange={(checked) => setEmailNotifications({...emailNotifications, updates: checked})}
                         />
                       </div>
-                      <Divider />
+                      <Separator />
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
                           <p className="font-medium">Security Alerts</p>
@@ -325,7 +325,7 @@ export default function SettingsProfileLayout() {
                           onCheckedChange={(checked) => setEmailNotifications({...emailNotifications, security: checked})}
                         />
                       </div>
-                      <Divider />
+                      <Separator />
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
                           <p className="font-medium">Newsletter</p>
@@ -391,7 +391,7 @@ export default function SettingsProfileLayout() {
                         </RadioGroup>
                       </div>
 
-                      <Divider />
+                      <Separator />
 
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">

@@ -101,9 +101,6 @@ export interface ChipProps extends HTMLAttributes<HTMLDivElement>, VariantProps<
 // Container
 export interface ContainerProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof containerVariants> {}
 
-// Divider
-export interface DividerProps extends HTMLAttributes<HTMLHRElement>, VariantProps<typeof dividerVariants> {}
-
 // Grid
 export interface GridProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof gridVariants> {}
 export interface GridItemProps extends HTMLAttributes<HTMLDivElement> {

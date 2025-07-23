@@ -22,7 +22,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Divider as Separator } from "@/components/ui/divider"
+import { Separator } from "@/components/ui/separator"
 import { toast } from "sonner"
 import { AlertCircle, Terminal, Zap, Sparkles, ChevronRight, User, Settings, LogOut, ChevronDown, Info, Navigation, CalendarDays } from "lucide-react"
 import { useState, useEffect } from "react"
