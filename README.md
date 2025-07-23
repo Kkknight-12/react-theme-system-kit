@@ -33,7 +33,7 @@ A modern, production-ready theme system for React applications featuring Tailwin
 ### Prerequisites
 
 - Node.js 18+ 
-- npm or yarn
+- pnpm (recommended) or yarn
 - Basic knowledge of React and Tailwind CSS
 
 ### Installation
@@ -46,14 +46,14 @@ cd react-theme-system-kit
 
 2. Install dependencies:
 ```bash
-npm install
+pnpm install
 # or
 yarn install
 ```
 
 3. Start the development server:
 ```bash
-npm run dev
+pnpm dev
 # or
 yarn dev
 ```
@@ -204,7 +204,7 @@ All components are fully responsive with breakpoints:
 ### Build for Production
 
 ```bash
-npm run build
+pnpm build
 # or
 yarn build
 ```
@@ -213,7 +213,7 @@ yarn build
 
 ```bash
 # Install Vercel CLI
-npm i -g vercel
+pnpm i -g vercel
 
 # Deploy
 vercel
@@ -223,18 +223,18 @@ vercel
 
 1. Push to GitHub
 2. Connect repository to Netlify
-3. Build command: `npm run build`
+3. Build command: `pnpm build`
 4. Publish directory: `dist`
 
 ## 🧪 Development
 
 ### Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run format` - Format with Prettier
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm preview` - Preview production build
+- `pnpm lint` - Run ESLint
+- `pnpm format` - Format with Prettier
 
 ### Code Style
 
@@ -273,8 +273,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📚 Documentation
 
-- [TypeScript Support](./TYPESCRIPT.md) - Using types for better IntelliSense
-- [Missing Features](./MISSING-FEATURES.md) - Roadmap for market readiness
+- [TypeScript Support](docs/TYPESCRIPT.md) - Using types for better IntelliSense
+- [Missing Features](docs/internal-documents/MISSING-FEATURES.md) - Roadmap for market readiness
 - [Examples](./src/examples) - Usage examples and patterns
 
 ## 🚀 Roadmap

@@ -8,8 +8,8 @@
 # Claude AI directory
 .claude/
 
-# Documentation directory
-docs/
+# Internal documentation
+docs/internal-documents/
 
 # Dependencies
 node_modules/
@@ -26,10 +26,8 @@ __tests__/
 coverage/
 .nyc_output/
 
-# Markdown files (except README.md and COMPONENTS.md)
-*.md
-!README.md
-!COMPONENTS.md
+# Distribution folder
+distribution/
 
 # Build outputs
 dist/

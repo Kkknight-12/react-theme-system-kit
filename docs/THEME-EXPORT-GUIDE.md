@@ -376,6 +376,6 @@ function exportAsScss(theme) {
 ## Resources
 
 - [Example Themes](./examples/themes/)
-- [Theme Customization Guide](./THEME-CUSTOMIZATION-GUIDE.md)
+- [Theme Customization Guide](../THEME-CUSTOMIZATION-GUIDE.md)
 - [Color Theory for Themes](https://www.smashingmagazine.com/2021/07/color-theory-web-design/)
 - [HSL Color Picker](https://hslpicker.com/)

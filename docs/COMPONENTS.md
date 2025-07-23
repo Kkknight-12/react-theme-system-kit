@@ -815,33 +815,32 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 
-<NavigationMenu>
-  <NavigationMenuList>
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>Products</NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-          <li className="row-span-3">
-            <NavigationMenuLink asChild>
-              <a href="/" className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6">
-                <div className="mb-2 mt-4 text-lg font-medium">
+<
+NavigationMenu > < NavigationMenuList > < NavigationMenuItem > < NavigationMenuTrigger > Products < /NavigationMenuTrigger>
+<NavigationMenuContent >
+        <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]" >
+          <li className="row-span-3" >
+            <NavigationMenuLink asChild >
+              <a href="/"
+                 className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6" >
+                <div className="mb-2 mt-4 text-lg font-medium" >
                   React Theme System Kit
-                </div>
-                <p className="text-sm leading-tight text-muted-foreground">
+                </div >
+                <p className="text-sm leading-tight text-muted-foreground" >
                   Beautiful, themeable components
-                </p>
-              </a>
-            </NavigationMenuLink>
-          </li>
-          <li>
-            <NavigationMenuLink asChild>
-              <a href="/docs">Documentation</a>
-            </NavigationMenuLink>
-          </li>
-        </ul>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-  </NavigationMenuList>
+                </p >
+              </a >
+            </NavigationMenuLink >
+          </li >
+          <li >
+            <NavigationMenuLink asChild >
+              <a href="/docs" >Documentation</a >
+            </NavigationMenuLink >
+          </li >
+        </ul >
+      </NavigationMenuContent >
+</NavigationMenuItem>
+</NavigationMenuList>
 </NavigationMenu>
 ```
 
