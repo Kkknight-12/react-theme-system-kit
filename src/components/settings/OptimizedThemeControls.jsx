@@ -15,7 +15,7 @@ export function ThemeToggleButton() {
   renderCount.current++;
   
   useEffect(() => {
-    console.log(`ThemeToggleButton rendered ${renderCount.current} times`);
+
   });
   
   return (
@@ -43,7 +43,7 @@ export function ThemeDisplay() {
   renderCount.current++;
   
   useEffect(() => {
-    console.log(`ThemeDisplay rendered ${renderCount.current} times`);
+
   });
   
   return (
@@ -81,7 +81,7 @@ export function OptimizedActionBar() {
   renderCount.current++;
   
   useEffect(() => {
-    console.log(`OptimizedActionBar rendered ${renderCount.current} times`);
+
   });
   
   return (
@@ -149,7 +149,7 @@ export function OptimizedColorPicker() {
   renderCount.current++;
   
   useEffect(() => {
-    console.log(`OptimizedColorPicker rendered ${renderCount.current} times`);
+
   });
   
   return (
@@ -203,7 +203,7 @@ export function SettingsPanel() {
   renderCount.current++;
   
   useEffect(() => {
-    console.log(`SettingsPanel rendered ${renderCount.current} times`);
+
   });
   
   return (

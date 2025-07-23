@@ -5,7 +5,7 @@ import ThemeShowcase from '@/components/ThemeShowcase.jsx'
 import ShadcnShowcase from '@/components/ShadcnShowcase.jsx'
 import LandingPage from '@/components/LandingPage.jsx'
 import LayoutShowcase from '@/components/LayoutShowcase.jsx'
-import ThemeExport from '@/pages/ThemeExport.jsx'
+import ThemeExport from '@/components/ThemeExport.jsx'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import './App.css'
 
