@@ -7,6 +7,15 @@ A modern, production-ready theme system for React applications featuring Tailwin
 ![React](https://img.shields.io/badge/react-19.1.0-61dafb.svg)
 ![Tailwind CSS](https://img.shields.io/badge/tailwind-4.0-06b6d4.svg)
 
+## 🛠️ Built With
+
+- **React 19** - Latest React with new features
+- **Vite** - Next generation frontend tooling
+- **React Router v6** - Client-side routing
+- **Tailwind CSS v4** - Utility-first CSS framework
+- **shadcn/ui** - High-quality React components
+- **Radix UI** - Unstyled, accessible components
+
 ## ✨ Features
 
 - 🎨 **8 Beautiful Color Themes** - Professionally designed color schemes using color theory principles
@@ -273,7 +282,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [x] TypeScript support (via .d.ts files)
 - [ ] Storybook integration
 - [ ] Theme builder tool
-- [ ] Next.js integration guide
+- [ ] Next.js integration guide (how to adapt components)
 - [ ] Advanced component patterns
 - [ ] Animation presets
 - [ ] RTL support

@@ -36,7 +36,7 @@ const includeList = [
   'src',
   'public',
   'docs',
-  'scripts',
+  // 'scripts', // Exclude scripts from distribution
   'package.json',
   'pnpm-lock.yaml',
   'vite.config.js',
@@ -54,7 +54,9 @@ const includeList = [
   'THEME-EXPORT-GUIDE.md',
   'TYPESCRIPT.md',
   'COMPONENTS.md',
-  'REACT-19-COMPREHENSIVE-GUIDE.md'
+  'REACT-19-COMPREHENSIVE-GUIDE.md',
+  'FRAMEWORK-COMPATIBILITY.md',
+  'SALES-DESCRIPTION.md'
 ];
 
 // Copy files
