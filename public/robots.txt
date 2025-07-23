@@ -7,7 +7,7 @@ Disallow: /admin/
 Disallow: /.env
 
 # Sitemap location
-Sitemap: https://react-theme-kit.vercel.app/sitemap.xml
+Sitemap: https://react-theme-system-kit.vercel.app/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1

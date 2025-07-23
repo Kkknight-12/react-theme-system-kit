@@ -50,13 +50,7 @@ const includeList = [
   'vercel.json',
   'LICENSE',
   'README.md',
-  'THEME-CUSTOMIZATION-GUIDE.md',
-  'THEME-EXPORT-GUIDE.md',
-  'TYPESCRIPT.md',
-  'COMPONENTS.md',
-  'REACT-19-COMPREHENSIVE-GUIDE.md',
-  'FRAMEWORK-COMPATIBILITY.md',
-  'SALES-DESCRIPTION.md'
+  '.gitignore'
 ];
 
 // Copy files
@@ -134,7 +128,7 @@ const installInstructions = `# Installation Instructions
    \`\`\`
 
 ## Live Demo
-View the live demo at: https://react-theme-kit.vercel.app/
+View the live demo at: https://react-theme-system-kit.vercel.app/
 
 ## Documentation
 - README.md - Getting started guide
@@ -183,7 +177,7 @@ function copyDirectorySync(src, dest) {
     const destPath = path.join(dest, entry.name);
     
     // Skip node_modules, dist, and other build artifacts
-    if (['node_modules', 'dist', '.git', '.DS_Store'].includes(entry.name)) {
+    if (['node_modules', 'dist', '.git', '.DS_Store', 'internal-documents'].includes(entry.name)) {
       continue;
     }
     
