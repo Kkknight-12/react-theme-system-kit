@@ -318,11 +318,7 @@ export function applyTheme(themeName) {
     
     accentLight = `oklch(0.94 ${ghostChroma.toFixed(3)} ${primaryH})`;
     accentDark = `oklch(0.22 ${ghostChroma.toFixed(3)} ${primaryH})`;
-    
-    console.log('Primary color OKLCH:', `L: ${cssL.toFixed(2)}, C: ${cssC.toFixed(3)}, H: ${primaryH}`);
-    console.log('Ghost button chroma:', ghostChroma.toFixed(3));
-    console.log('Light accent:', accentLight);
-    console.log('Dark accent:', accentDark);
+
   } catch (error) {
     console.error('Failed to generate accent colors:', error);
     // Fallback to neutral colors

@@ -15,7 +15,7 @@ function ChartContainer({
   const { config: computedConfig } = useChart({ config })
 
   return (
-    <ChartContext.Provider value={{ config: computedConfig }}>
+    <ChartContext value={{ config: computedConfig }}>
       <div
         data-chart=""
         className={cn(
@@ -28,14 +28,13 @@ function ChartContainer({
           {children}
         </RechartsPrimitive.ResponsiveContainer>
       </div>
-    </ChartContext.Provider>
+    </ChartContext>
   )
 }
 
 const ChartTooltip = RechartsPrimitive.Tooltip
 
-const ChartTooltipContent = React.forwardRef(
-  ({ active, payload, className, indicator = "dot", label, labelFormatter, labelClassName, formatter, hideLabel = false, hideIndicator = false }, ref) => {
+function ChartTooltipContent({ active, payload, className, indicator = "dot", label, labelFormatter, labelClassName, formatter, hideLabel = false, hideIndicator = false, ref }) {
     const { config } = React.useContext(ChartContext)
 
     React.useMemo(() => {
@@ -107,14 +106,12 @@ const ChartTooltipContent = React.forwardRef(
         </div>
       </div>
     )
-  }
-)
+}
 ChartTooltipContent.displayName = "ChartTooltipContent"
 
 const ChartLegend = RechartsPrimitive.Legend
 
-const ChartLegendContent = React.forwardRef(
-  ({ className, payload }, ref) => {
+function ChartLegendContent({ className, payload, ref }) {
     const { config } = React.useContext(ChartContext)
 
     if (!payload?.length) {
@@ -143,8 +140,7 @@ const ChartLegendContent = React.forwardRef(
         })}
       </div>
     )
-  }
-)
+}
 ChartLegendContent.displayName = "ChartLegendContent"
 
 export {

@@ -269,11 +269,11 @@ export function SettingsProvider({ children }) {
   );
 
   return (
-    <SettingsStateContext.Provider value={stateValue}>
-      <SettingsActionsContext.Provider value={actions}>
+    <SettingsStateContext value={stateValue}>
+      <SettingsActionsContext value={actions}>
         {children}
-      </SettingsActionsContext.Provider>
-    </SettingsStateContext.Provider>
+      </SettingsActionsContext>
+    </SettingsStateContext>
   );
 }
 

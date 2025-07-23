@@ -58,32 +58,30 @@ const stackVariants = cva(
   }
 );
 
-const Stack = React.forwardRef(
-  ({ className, direction, align, justify, wrap, gap, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          stackVariants({ direction, align, justify, wrap, gap }),
-          className
-        )}
-        {...props}
-      />
-    );
-  }
-);
+function Stack({ className, direction, align, justify, wrap, gap, ref, ...props }) {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        stackVariants({ direction, align, justify, wrap, gap }),
+        className
+      )}
+      {...props}
+    />
+  );
+}
 
 Stack.displayName = 'Stack';
 
 // Convenience components
-const HStack = React.forwardRef((props, ref) => (
-  <Stack ref={ref} direction="row" {...props} />
-));
+function HStack({ ref, ...props }) {
+  return <Stack ref={ref} direction="row" {...props} />;
+}
 HStack.displayName = 'HStack';
 
-const VStack = React.forwardRef((props, ref) => (
-  <Stack ref={ref} direction="col" {...props} />
-));
+function VStack({ ref, ...props }) {
+  return <Stack ref={ref} direction="col" {...props} />;
+}
 VStack.displayName = 'VStack';
 
 export { Stack, HStack, VStack };

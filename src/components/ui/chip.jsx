@@ -29,29 +29,27 @@ const chipVariants = cva(
   }
 );
 
-const Chip = React.forwardRef(
-  ({ className, variant, size, onDelete, children, ...props }, ref) => {
-    return (
-      <div
-        className={cn(chipVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      >
-        {children}
-        {onDelete && (
-          <button
-            type="button"
-            onClick={onDelete}
-            className="ml-1 -mr-1 rounded-full p-0.5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
-            aria-label="Remove"
-          >
-            <X className="h-3 w-3" />
-          </button>
-        )}
-      </div>
-    );
-  }
-);
+function Chip({ className, variant, size, onDelete, children, ref, ...props }) {
+  return (
+    <div
+      className={cn(chipVariants({ variant, size, className }))}
+      ref={ref}
+      {...props}
+    >
+      {children}
+      {onDelete && (
+        <button
+          type="button"
+          onClick={onDelete}
+          className="ml-1 -mr-1 rounded-full p-0.5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+          aria-label="Remove"
+        >
+          <X className="h-3 w-3" />
+        </button>
+      )}
+    </div>
+  );
+}
 
 Chip.displayName = 'Chip';
 

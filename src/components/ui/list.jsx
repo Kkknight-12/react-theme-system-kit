@@ -1,17 +1,19 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 
-const List = React.forwardRef(({ className, ...props }, ref) => (
-  <ul
-    ref={ref}
-    className={cn('space-y-1', className)}
-    {...props}
-  />
-));
+function List({ className, ref, ...props }) {
+  return (
+    <ul
+      ref={ref}
+      className={cn('space-y-1', className)}
+      {...props}
+    />
+  );
+}
 List.displayName = 'List';
 
-const ListItem = React.forwardRef(
-  ({ className, selected, disabled, ...props }, ref) => (
+function ListItem({ className, selected, disabled, ref, ...props }) {
+  return (
     <li
       ref={ref}
       className={cn(
@@ -24,12 +26,12 @@ const ListItem = React.forwardRef(
       )}
       {...props}
     />
-  )
-);
+  );
+}
 ListItem.displayName = 'ListItem';
 
-const ListItemButton = React.forwardRef(
-  ({ className, selected, disabled, ...props }, ref) => (
+function ListItemButton({ className, selected, disabled, ref, ...props }) {
+  return (
     <button
       ref={ref}
       type="button"
@@ -45,46 +47,52 @@ const ListItemButton = React.forwardRef(
       disabled={disabled}
       {...props}
     />
-  )
-);
+  );
+}
 ListItemButton.displayName = 'ListItemButton';
 
-const ListItemIcon = React.forwardRef(({ className, ...props }, ref) => (
-  <span
-    ref={ref}
-    className={cn('mr-3 inline-flex h-5 w-5 shrink-0 items-center justify-center', className)}
-    {...props}
-  />
-));
+function ListItemIcon({ className, ref, ...props }) {
+  return (
+    <span
+      ref={ref}
+      className={cn('mr-3 inline-flex h-5 w-5 shrink-0 items-center justify-center', className)}
+      {...props}
+    />
+  );
+}
 ListItemIcon.displayName = 'ListItemIcon';
 
-const ListItemText = React.forwardRef(
-  ({ className, primary, secondary, ...props }, ref) => (
+function ListItemText({ className, primary, secondary, ref, ...props }) {
+  return (
     <div ref={ref} className={cn('flex-1', className)} {...props}>
       {primary && <div className="font-medium">{primary}</div>}
       {secondary && <div className="text-sm text-muted-foreground">{secondary}</div>}
     </div>
-  )
-);
+  );
+}
 ListItemText.displayName = 'ListItemText';
 
-const ListSubheader = React.forwardRef(({ className, ...props }, ref) => (
-  <li
-    ref={ref}
-    className={cn(
-      'px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider',
-      className
-    )}
-    {...props}
-  />
-));
+function ListSubheader({ className, ref, ...props }) {
+  return (
+    <li
+      ref={ref}
+      className={cn(
+        'px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider',
+        className
+      )}
+      {...props}
+    />
+  );
+}
 ListSubheader.displayName = 'ListSubheader';
 
-const ListDivider = React.forwardRef(({ className, ...props }, ref) => (
-  <li ref={ref} className={cn('my-1', className)} {...props}>
-    <div className="h-px bg-border" />
-  </li>
-));
+function ListDivider({ className, ref, ...props }) {
+  return (
+    <li ref={ref} className={cn('my-1', className)} {...props}>
+      <div className="h-px bg-border" />
+    </li>
+  );
+}
 ListDivider.displayName = 'ListDivider';
 
 export { List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader, ListDivider };

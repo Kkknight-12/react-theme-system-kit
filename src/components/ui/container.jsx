@@ -37,32 +37,28 @@ const containerVariants = cva(
   }
 );
 
-const Container = React.forwardRef(
-  ({ className, size, padding, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cn(containerVariants({ size, padding }), className)}
-        {...props}
-      />
-    );
-  }
-);
+function Container({ className, size, padding, ref, ...props }) {
+  return (
+    <div
+      ref={ref}
+      className={cn(containerVariants({ size, padding }), className)}
+      {...props}
+    />
+  );
+}
 
 Container.displayName = 'Container';
 
 // Section wrapper with container
-const Section = React.forwardRef(
-  ({ className, containerSize, containerPadding, children, ...props }, ref) => {
-    return (
-      <section ref={ref} className={cn('py-12 sm:py-16 lg:py-20', className)} {...props}>
-        <Container size={containerSize} padding={containerPadding}>
-          {children}
-        </Container>
-      </section>
-    );
-  }
-);
+function Section({ className, containerSize, containerPadding, children, ref, ...props }) {
+  return (
+    <section ref={ref} className={cn('py-12 sm:py-16 lg:py-20', className)} {...props}>
+      <Container size={containerSize} padding={containerPadding}>
+        {children}
+      </Container>
+    </section>
+  );
+}
 
 Section.displayName = 'Section';
 

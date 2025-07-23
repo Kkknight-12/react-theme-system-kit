@@ -31,35 +31,33 @@ const iconButtonVariants = cva(
   }
 );
 
-const IconButton = React.forwardRef(
-  ({ className, variant, size, asChild = false, tooltip, ...props }, ref) => {
-    const Comp = asChild ? Slot : 'button';
-    const button = (
-      <Comp
-        className={cn(iconButtonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
+function IconButton({ className, variant, size, asChild = false, tooltip, ref, ...props }) {
+  const Comp = asChild ? Slot : 'button';
+  const button = (
+    <Comp
+      className={cn(iconButtonVariants({ variant, size, className }))}
+      ref={ref}
+      {...props}
+    />
+  );
+
+  if (tooltip) {
+    return (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            {button}
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{tooltip}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     );
-
-    if (tooltip) {
-      return (
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              {button}
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{tooltip}</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      );
-    }
-
-    return button;
   }
-);
+
+  return button;
+}
 
 IconButton.displayName = 'IconButton';
 

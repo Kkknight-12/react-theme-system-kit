@@ -661,7 +661,7 @@ export const themePresets = {
                 <span className="text-2xl">⚛️</span>
               </div>
               <div>
-                <p className="font-semibold">React 18</p>
+                <p className="font-semibold">React 19</p>
                 <p className="text-sm text-muted-foreground">Latest version</p>
               </div>
             </div>

@@ -4,7 +4,7 @@ A modern, production-ready theme system for React applications featuring Tailwin
 
 ![React Theme System Kit](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![React](https://img.shields.io/badge/react-18.3.1-61dafb.svg)
+![React](https://img.shields.io/badge/react-19.1.0-61dafb.svg)
 ![Tailwind CSS](https://img.shields.io/badge/tailwind-4.0-06b6d4.svg)
 
 ## ✨ Features

@@ -44,49 +44,45 @@ const gridVariants = cva(
   }
 );
 
-const Grid = React.forwardRef(
-  ({ className, cols, gap, responsive, ...props }, ref) => {
-    // Handle responsive grid
-    const responsiveClasses = responsive ? {
-      'sm:grid-cols-2': cols >= 2,
-      'md:grid-cols-3': cols >= 3,
-      'lg:grid-cols-4': cols >= 4,
-      'xl:grid-cols-5': cols >= 5,
-      '2xl:grid-cols-6': cols >= 6,
-    } : {};
+function Grid({ className, cols, gap, responsive, ref, ...props }) {
+  // Handle responsive grid
+  const responsiveClasses = responsive ? {
+    'sm:grid-cols-2': cols >= 2,
+    'md:grid-cols-3': cols >= 3,
+    'lg:grid-cols-4': cols >= 4,
+    'xl:grid-cols-5': cols >= 5,
+    '2xl:grid-cols-6': cols >= 6,
+  } : {};
 
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          gridVariants({ cols: responsive ? 1 : cols, gap }),
-          responsiveClasses,
-          className
-        )}
-        {...props}
-      />
-    );
-  }
-);
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        gridVariants({ cols: responsive ? 1 : cols, gap }),
+        responsiveClasses,
+        className
+      )}
+      {...props}
+    />
+  );
+}
 
 Grid.displayName = 'Grid';
 
-const GridItem = React.forwardRef(
-  ({ className, colSpan, rowSpan, ...props }, ref) => {
-    const spanClasses = {
-      [`col-span-${colSpan}`]: colSpan,
-      [`row-span-${rowSpan}`]: rowSpan,
-    };
+function GridItem({ className, colSpan, rowSpan, ref, ...props }) {
+  const spanClasses = {
+    [`col-span-${colSpan}`]: colSpan,
+    [`row-span-${rowSpan}`]: rowSpan,
+  };
 
-    return (
-      <div
-        ref={ref}
-        className={cn(spanClasses, className)}
-        {...props}
-      />
-    );
-  }
-);
+  return (
+    <div
+      ref={ref}
+      className={cn(spanClasses, className)}
+      {...props}
+    />
+  );
+}
 
 GridItem.displayName = 'GridItem';
 
