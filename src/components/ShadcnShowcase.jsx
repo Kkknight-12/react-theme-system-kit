@@ -1,82 +1,163 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Switch } from "@/components/ui/switch"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Progress } from "@/components/ui/progress"
-import { Skeleton } from "@/components/ui/skeleton"
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Textarea } from "@/components/ui/textarea"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
-import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Separator } from "@/components/ui/separator"
-import { toast } from "sonner"
-import { AlertCircle, Terminal, Zap, Sparkles, ChevronRight, User, Settings, LogOut, ChevronDown, Info, Navigation, CalendarDays } from "lucide-react"
-import { useState, useEffect } from "react"
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Switch } from '@/components/ui/switch';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Progress } from '@/components/ui/progress';
+import { Skeleton } from '@/components/ui/skeleton';
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/drawer';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Separator } from '@/components/ui/separator';
+import { toast } from 'sonner';
+import {
+  AlertCircle,
+  Terminal,
+  Zap,
+  Sparkles,
+  ChevronRight,
+  User,
+  Settings,
+  LogOut,
+  ChevronDown,
+  Info,
+  Navigation,
+  CalendarDays,
+} from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export default function ShadcnShowcase() {
-  const [dialogOpen, setDialogOpen] = useState(false)
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const [isCollapsibleOpen, setIsCollapsibleOpen] = useState(false)
-  const [checked, setChecked] = useState(false)
-  const [enabled, setEnabled] = useState(false)
-  const [selectedSize, setSelectedSize] = useState("medium")
-  const [progress, setProgress] = useState(13)
-  const [loading, setLoading] = useState(true)
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isCollapsibleOpen, setIsCollapsibleOpen] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const [enabled, setEnabled] = useState(false);
+  const [selectedSize, setSelectedSize] = useState('medium');
+  const [progress, setProgress] = useState(13);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setProgress(66)
-    }, 500)
-    return () => clearTimeout(timer)
-  }, [])
+      setProgress(66);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-    return () => clearTimeout(timer)
-  }, [])
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <TooltipProvider>
-      <div className="max-w-7xl mx-auto p-8 space-y-12">
+      <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 space-y-8 sm:space-y-12">
         {/* Header */}
         <section className="text-center">
-          <h1 className="text-5xl font-bold text-primary-500 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-500 mb-4">
             Shadcn/UI Component Library
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Complete component showcase with 40+ components, all integrated with our multi-theme system.
-            Switch themes to see instant updates across all components.
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
+            Complete component showcase with 40+ components, all integrated with
+            our multi-theme system. Switch themes to see instant updates across
+            all components.
           </p>
         </section>
 
         {/* Navigation Components */}
         <section>
-          <h2 className="text-3xl font-bold mb-6 text-foreground flex items-center gap-2">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-foreground flex items-center gap-2">
             <Navigation className="h-8 w-8 text-primary-500" />
             Navigation
           </h2>
-          
+
           {/* Breadcrumb */}
           <Card className="mb-6">
             <CardHeader>
               <CardTitle>Breadcrumb</CardTitle>
-              <CardDescription>Navigation breadcrumbs for hierarchical pages</CardDescription>
+              <CardDescription>
+                Navigation breadcrumbs for hierarchical pages
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Breadcrumb>
@@ -101,7 +182,9 @@ export default function ShadcnShowcase() {
           <Card>
             <CardHeader>
               <CardTitle>Dropdown Menu</CardTitle>
-              <CardDescription>Contextual menus with keyboard navigation</CardDescription>
+              <CardDescription>
+                Contextual menus with keyboard navigation
+              </CardDescription>
             </CardHeader>
             <CardContent className="flex gap-4">
               <DropdownMenu>
@@ -134,8 +217,10 @@ export default function ShadcnShowcase() {
 
         {/* Form Components */}
         <section>
-          <h2 className="text-3xl font-bold mb-6 text-foreground">Form Controls</h2>
-          
+          <h2 className="text-3xl font-bold mb-6 text-foreground">
+            Form Controls
+          </h2>
+
           {/* Basic Inputs */}
           <Card className="mb-6">
             <CardHeader>
@@ -146,18 +231,26 @@ export default function ShadcnShowcase() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="Enter your email" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="password">Password</Label>
-                  <Input id="password" type="password" placeholder="Enter password" />
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="Enter password"
+                  />
                 </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="message">Message</Label>
-                <Textarea 
-                  id="message" 
-                  placeholder="Type your message here." 
+                <Textarea
+                  id="message"
+                  placeholder="Type your message here."
                   className="min-h-[100px]"
                 />
               </div>
@@ -172,8 +265,8 @@ export default function ShadcnShowcase() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="flex items-center space-x-2">
-                <Checkbox 
-                  id="terms" 
+                <Checkbox
+                  id="terms"
                   checked={checked}
                   onCheckedChange={setChecked}
                 />
@@ -185,7 +278,7 @@ export default function ShadcnShowcase() {
                 <Label htmlFor="airplane-mode" className="cursor-pointer">
                   Enable notifications
                 </Label>
-                <Switch 
+                <Switch
                   id="airplane-mode"
                   checked={enabled}
                   onCheckedChange={setEnabled}
@@ -198,21 +291,29 @@ export default function ShadcnShowcase() {
           <Card>
             <CardHeader>
               <CardTitle>Radio Group</CardTitle>
-              <CardDescription>Single selection from multiple options</CardDescription>
+              <CardDescription>
+                Single selection from multiple options
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <RadioGroup value={selectedSize} onValueChange={setSelectedSize}>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="small" id="small" />
-                  <Label htmlFor="small" className="cursor-pointer">Small</Label>
+                  <Label htmlFor="small" className="cursor-pointer">
+                    Small
+                  </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="medium" id="medium" />
-                  <Label htmlFor="medium" className="cursor-pointer">Medium</Label>
+                  <Label htmlFor="medium" className="cursor-pointer">
+                    Medium
+                  </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="large" id="large" />
-                  <Label htmlFor="large" className="cursor-pointer">Large</Label>
+                  <Label htmlFor="large" className="cursor-pointer">
+                    Large
+                  </Label>
                 </div>
               </RadioGroup>
             </CardContent>
@@ -221,25 +322,36 @@ export default function ShadcnShowcase() {
 
         {/* Data Display */}
         <section>
-          <h2 className="text-3xl font-bold mb-6 text-foreground">Data Display</h2>
-          
+          <h2 className="text-3xl font-bold mb-6 text-foreground">
+            Data Display
+          </h2>
+
           {/* Avatar */}
           <Card className="mb-6">
             <CardHeader>
               <CardTitle>Avatars</CardTitle>
-              <CardDescription>User profile images with fallbacks</CardDescription>
+              <CardDescription>
+                User profile images with fallbacks
+              </CardDescription>
             </CardHeader>
             <CardContent className="flex items-center gap-4">
               <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
               <Avatar>
                 <AvatarImage src="/broken-image.jpg" alt="User" />
-                <AvatarFallback className="bg-primary-500 text-white">AB</AvatarFallback>
+                <AvatarFallback className="bg-primary-500 text-white">
+                  AB
+                </AvatarFallback>
               </Avatar>
               <Avatar>
-                <AvatarFallback className="bg-secondary-500 text-white">XY</AvatarFallback>
+                <AvatarFallback className="bg-secondary-500 text-white">
+                  XY
+                </AvatarFallback>
               </Avatar>
             </CardContent>
           </Card>
@@ -312,7 +424,9 @@ export default function ShadcnShowcase() {
           <Card>
             <CardHeader>
               <CardTitle>Skeleton Loading States</CardTitle>
-              <CardDescription>Content placeholders while loading</CardDescription>
+              <CardDescription>
+                Content placeholders while loading
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {loading ? (
@@ -337,7 +451,9 @@ export default function ShadcnShowcase() {
                     </Avatar>
                     <div>
                       <p className="font-medium">John Doe</p>
-                      <p className="text-sm text-muted-foreground">john@example.com</p>
+                      <p className="text-sm text-muted-foreground">
+                        john@example.com
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -348,13 +464,17 @@ export default function ShadcnShowcase() {
 
         {/* Overlays & Popovers */}
         <section>
-          <h2 className="text-3xl font-bold mb-6 text-foreground">Overlays & Tooltips</h2>
-          
+          <h2 className="text-3xl font-bold mb-6 text-foreground">
+            Overlays & Tooltips
+          </h2>
+
           {/* Tooltips and Popovers */}
           <Card className="mb-6">
             <CardHeader>
               <CardTitle>Tooltips & Popovers</CardTitle>
-              <CardDescription>Contextual information on hover or click</CardDescription>
+              <CardDescription>
+                Contextual information on hover or click
+              </CardDescription>
             </CardHeader>
             <CardContent className="flex gap-4 items-center">
               <Tooltip>
@@ -404,7 +524,9 @@ export default function ShadcnShowcase() {
           <Card className="mb-6">
             <CardHeader>
               <CardTitle>Drawer</CardTitle>
-              <CardDescription>Slide-out panels for additional content</CardDescription>
+              <CardDescription>
+                Slide-out panels for additional content
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
@@ -415,7 +537,8 @@ export default function ShadcnShowcase() {
                   <DrawerHeader>
                     <DrawerTitle>Edit Profile</DrawerTitle>
                     <DrawerDescription>
-                      Make changes to your profile here. Click save when you're done.
+                      Make changes to your profile here. Click save when you're
+                      done.
                     </DrawerDescription>
                   </DrawerHeader>
                   <div className="p-4 space-y-4">
@@ -425,11 +548,17 @@ export default function ShadcnShowcase() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="drawer-email">Email</Label>
-                      <Input id="drawer-email" type="email" defaultValue="john@example.com" />
+                      <Input
+                        id="drawer-email"
+                        type="email"
+                        defaultValue="john@example.com"
+                      />
                     </div>
                   </div>
                   <DrawerFooter>
-                    <Button onClick={() => setDrawerOpen(false)}>Save changes</Button>
+                    <Button onClick={() => setDrawerOpen(false)}>
+                      Save changes
+                    </Button>
                     <DrawerClose asChild>
                       <Button variant="outline">Cancel</Button>
                     </DrawerClose>
@@ -446,16 +575,14 @@ export default function ShadcnShowcase() {
               <CardDescription>Non-intrusive feedback messages</CardDescription>
             </CardHeader>
             <CardContent className="flex gap-2 flex-wrap">
-              <Button
-                onClick={() => toast("Event has been created")}
-              >
+              <Button onClick={() => toast('Event has been created')}>
                 Default Toast
               </Button>
               <Button
                 variant="outline"
-                onClick={() => 
-                  toast.success("Successfully saved!", {
-                    description: "Your changes have been saved.",
+                onClick={() =>
+                  toast.success('Successfully saved!', {
+                    description: 'Your changes have been saved.',
                   })
                 }
               >
@@ -463,9 +590,9 @@ export default function ShadcnShowcase() {
               </Button>
               <Button
                 variant="outline"
-                onClick={() => 
-                  toast.error("Something went wrong", {
-                    description: "Please try again later.",
+                onClick={() =>
+                  toast.error('Something went wrong', {
+                    description: 'Please try again later.',
                   })
                 }
               >
@@ -477,8 +604,10 @@ export default function ShadcnShowcase() {
 
         {/* Layout Components */}
         <section>
-          <h2 className="text-3xl font-bold mb-6 text-foreground">Layout & Structure</h2>
-          
+          <h2 className="text-3xl font-bold mb-6 text-foreground">
+            Layout & Structure
+          </h2>
+
           {/* Collapsible */}
           <Card className="mb-6">
             <CardHeader>
@@ -497,7 +626,9 @@ export default function ShadcnShowcase() {
                   </h4>
                   <CollapsibleTrigger asChild>
                     <Button variant="ghost" size="sm" className="w-9 p-0">
-                      <ChevronRight className={`h-4 w-4 transition-transform ${isCollapsibleOpen ? 'rotate-90' : ''}`} />
+                      <ChevronRight
+                        className={`h-4 w-4 transition-transform ${isCollapsibleOpen ? 'rotate-90' : ''}`}
+                      />
                       <span className="sr-only">Toggle</span>
                     </Button>
                   </CollapsibleTrigger>
@@ -528,9 +659,7 @@ export default function ShadcnShowcase() {
                 <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
                 {Array.from({ length: 50 }).map((_, i) => (
                   <div key={i}>
-                    <div className="text-sm py-2">
-                      Tag {i + 1}
-                    </div>
+                    <div className="text-sm py-2">Tag {i + 1}</div>
                     <Separator className="my-2" />
                   </div>
                 ))}
@@ -547,7 +676,9 @@ export default function ShadcnShowcase() {
             <CardContent className="space-y-4">
               <div>
                 <div className="space-y-1">
-                  <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
+                  <h4 className="text-sm font-medium leading-none">
+                    Radix Primitives
+                  </h4>
                   <p className="text-sm text-muted-foreground">
                     An open-source UI component library.
                   </p>
@@ -567,8 +698,10 @@ export default function ShadcnShowcase() {
 
         {/* Original Components - Reorganized */}
         <section>
-          <h2 className="text-3xl font-bold mb-6 text-foreground">Core Components</h2>
-          
+          <h2 className="text-3xl font-bold mb-6 text-foreground">
+            Core Components
+          </h2>
+
           {/* Buttons */}
           <Card className="mb-6">
             <CardHeader>
@@ -594,16 +727,24 @@ export default function ShadcnShowcase() {
               <CardTitle>Badge Variants</CardTitle>
               <CardDescription>Status indicators and labels</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-wrap gap-2">
+            <CardContent className="flex flex-wrap gap-2 gap-y-4">
               <Badge>Default</Badge>
               <Badge variant="secondary">Secondary</Badge>
               <Badge variant="destructive">Destructive</Badge>
               <Badge variant="outline">Outline</Badge>
-              <div className="flex gap-2 items-center ml-4">
-                <Badge className="bg-success text-white hover:bg-success/90">Success</Badge>
-                <Badge className="bg-warning text-white hover:bg-warning/90">Warning</Badge>
-                <Badge className="bg-info text-white hover:bg-info/90">Info</Badge>
-                <Badge className="bg-primary-500 text-white hover:bg-primary-600">Primary</Badge>
+              <div className="flex gap-2 items-center md:ml-4">
+                <Badge className="bg-success text-white hover:bg-success/90">
+                  Success
+                </Badge>
+                <Badge className="bg-warning text-white hover:bg-warning/90">
+                  Warning
+                </Badge>
+                <Badge className="bg-info text-white hover:bg-info/90">
+                  Info
+                </Badge>
+                <Badge className="bg-primary-500 text-white hover:bg-primary-600">
+                  Primary
+                </Badge>
               </div>
             </CardContent>
           </Card>
@@ -622,7 +763,7 @@ export default function ShadcnShowcase() {
                   You can add components to your app using the cli.
                 </AlertDescription>
               </Alert>
-              
+
               <Alert variant="destructive">
                 <AlertCircle className="h-4 w-4" />
                 <AlertTitle>Error</AlertTitle>
@@ -641,7 +782,9 @@ export default function ShadcnShowcase() {
 
               <Alert className="border-primary-500 bg-primary-500/10">
                 <Sparkles className="h-4 w-4 text-primary-500" />
-                <AlertTitle className="text-primary-600">Theme Applied!</AlertTitle>
+                <AlertTitle className="text-primary-600">
+                  Theme Applied!
+                </AlertTitle>
                 <AlertDescription className="text-primary-600">
                   Components are now using your custom theme colors.
                 </AlertDescription>
@@ -653,7 +796,9 @@ export default function ShadcnShowcase() {
           <Card className="mb-6">
             <CardHeader>
               <CardTitle>Tabs Component</CardTitle>
-              <CardDescription>Organize content into switchable panels</CardDescription>
+              <CardDescription>
+                Organize content into switchable panels
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Tabs defaultValue="account" className="w-full">
@@ -715,7 +860,9 @@ export default function ShadcnShowcase() {
           <Card>
             <CardHeader>
               <CardTitle>Dialog Component</CardTitle>
-              <CardDescription>Modal dialogs for important interactions</CardDescription>
+              <CardDescription>
+                Modal dialogs for important interactions
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
@@ -726,7 +873,8 @@ export default function ShadcnShowcase() {
                   <DialogHeader>
                     <DialogTitle>Edit profile</DialogTitle>
                     <DialogDescription>
-                      Make changes to your profile here. Click save when you're done.
+                      Make changes to your profile here. Click save when you're
+                      done.
                     </DialogDescription>
                   </DialogHeader>
                   <div className="grid gap-4 py-4">
@@ -752,7 +900,10 @@ export default function ShadcnShowcase() {
                     </div>
                   </div>
                   <DialogFooter>
-                    <Button variant="outline" onClick={() => setDialogOpen(false)}>
+                    <Button
+                      variant="outline"
+                      onClick={() => setDialogOpen(false)}
+                    >
                       Cancel
                     </Button>
                     <Button onClick={() => setDialogOpen(false)}>
@@ -769,7 +920,9 @@ export default function ShadcnShowcase() {
         <section>
           <Card className="border-primary-500/20 bg-primary-500/5">
             <CardHeader>
-              <CardTitle className="text-primary-600">🎨 Complete Theme Integration</CardTitle>
+              <CardTitle className="text-primary-600">
+                🎨 Complete Theme Integration
+              </CardTitle>
               <CardDescription className="text-primary-600/80">
                 40+ components, 8 themes, infinite possibilities
               </CardDescription>
@@ -777,7 +930,9 @@ export default function ShadcnShowcase() {
             <CardContent className="space-y-4 text-sm">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <h3 className="font-semibold text-primary-600">What's Included:</h3>
+                  <h3 className="font-semibold text-primary-600">
+                    What's Included:
+                  </h3>
                   <ul className="list-disc list-inside space-y-1 text-muted-foreground">
                     <li>All 40+ shadcn/ui components</li>
                     <li>8 pre-built color themes</li>
@@ -788,7 +943,9 @@ export default function ShadcnShowcase() {
                   </ul>
                 </div>
                 <div className="space-y-2">
-                  <h3 className="font-semibold text-primary-600">Theme Features:</h3>
+                  <h3 className="font-semibold text-primary-600">
+                    Theme Features:
+                  </h3>
                   <ul className="list-disc list-inside space-y-1 text-muted-foreground">
                     <li>Dynamic theme switching</li>
                     <li>Persistent theme preferences</li>
@@ -801,12 +958,13 @@ export default function ShadcnShowcase() {
               </div>
               <Separator className="my-4" />
               <p className="text-center text-muted-foreground">
-                Switch themes using the settings panel to see all components update instantly!
+                Switch themes using the settings panel to see all components
+                update instantly!
               </p>
             </CardContent>
           </Card>
         </section>
       </div>
     </TooltipProvider>
-  )
+  );
 }

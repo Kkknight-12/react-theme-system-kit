@@ -9,8 +9,8 @@
  * See THEME-IMPLEMENTATION.md for usage guide
  */
 
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -24,14 +24,14 @@
   --color-primary-50: oklch(0.98 0.04 166);
   --color-primary-100: oklch(0.96 0.08 166);
   --color-primary-200: oklch(0.91 0.14 166);
-  --color-primary-300: oklch(0.84 0.20 166);
+  --color-primary-300: oklch(0.84 0.2 166);
   --color-primary-400: oklch(0.74 0.22 166);
-  --color-primary-500: oklch(0.64 0.20 166);
+  --color-primary-500: oklch(0.64 0.2 166);
   --color-primary-600: oklch(0.54 0.18 166);
   --color-primary-700: oklch(0.44 0.14 166);
   --color-primary-800: oklch(0.36 0.11 166);
-  --color-primary-900: oklch(0.30 0.09 166);
-  --color-primary-950: oklch(0.20 0.08 166);
+  --color-primary-900: oklch(0.3 0.09 166);
+  --color-primary-950: oklch(0.2 0.08 166);
 
   /* Secondary colors - Will be set by theme (default to blue for complementary) */
   --color-secondary-50: oklch(0.97 0.014 254);
@@ -85,9 +85,9 @@
   /* ===== TAILWIND STATIC VALUES ===== */
   /* These exist for Tailwind internals but utilities use the bridge pattern */
   /* The actual utilities (bg-background, etc.) reference CSS bridge variables */
-  --color-background: oklch(1 0 0);  /* white - utilities use bridge pattern */
-  --color-card: oklch(1 0 0);  /* white - utilities use bridge pattern */
-  --color-popover: oklch(1 0 0);  /* white - utilities use bridge pattern */
+  --color-background: oklch(1 0 0); /* white - utilities use bridge pattern */
+  --color-card: oklch(1 0 0); /* white - utilities use bridge pattern */
+  --color-popover: oklch(1 0 0); /* white - utilities use bridge pattern */
 
   /* ===== TAILWIND SPACING & DESIGN TOKENS ===== */
   /* Custom spacing scale - COMMENTED OUT: Caused namespace collision with Tailwind internals */
@@ -176,18 +176,18 @@
 /* They are referenced by @theme inline to create dark-mode-aware utilities */
 :root {
   /* Background colors that switch in dark mode */
-  --background: oklch(1 0 0);  /* white */
-  --card: oklch(1 0 0);  /* white */
-  --popover: oklch(1 0 0);  /* white */
+  --background: oklch(1 0 0); /* white */
+  --card: oklch(1 0 0); /* white */
+  --popover: oklch(1 0 0); /* white */
 
   /* Text colors that switch in dark mode */
-  --foreground: oklch(0.141 0.005 286);  /* neutral-950 */
-  --card-foreground: oklch(0.141 0.005 286);  /* neutral-950 */
-  --popover-foreground: oklch(0.141 0.005 286);  /* neutral-950 */
+  --foreground: oklch(0.141 0.005 286); /* neutral-950 */
+  --card-foreground: oklch(0.141 0.005 286); /* neutral-950 */
+  --popover-foreground: oklch(0.141 0.005 286); /* neutral-950 */
 
   /* Background colors for muted elements */
-  --muted-foreground: oklch(0.552 0.016 286);  /* neutral-500 */
-  --muted: oklch(0.967 0.001 286);  /* neutral-100 */
+  --muted-foreground: oklch(0.552 0.016 286); /* neutral-500 */
+  --muted: oklch(0.967 0.001 286); /* neutral-100 */
 
   /* Accent colors for ghost buttons and hover states */
   /* NOTE: --accent and --accent-foreground are dynamically injected by theme.js */
@@ -198,8 +198,8 @@
   --accent-foreground: oklch(0.205 0 0);
 
   /* Form element colors */
-  --border: oklch(0.92 0.004 286);  /* neutral-200 */
-  --input: oklch(0.92 0.004 286);  /* neutral-200 */
+  --border: oklch(0.92 0.004 286); /* neutral-200 */
+  --input: oklch(0.92 0.004 286); /* neutral-200 */
 
   /* Primary and secondary colors don't change in dark mode */
   /* They are defined as static color scales in @theme and updated by theme.js */
@@ -215,22 +215,30 @@
 
 .dark {
   /* Dark mode overrides for CSS bridge variables */
-  --background: oklch(0.141 0.005 286);  /* neutral-950 */
-  --card: oklch(0.21 0.006 286);  /* neutral-900 */
-  --popover: oklch(0.21 0.006 286);  /* neutral-900 */
+  --background: oklch(0.141 0.005 286); /* neutral-950 */
+  --card: oklch(0.21 0.006 286); /* neutral-900 */
+  --popover: oklch(0.21 0.006 286); /* neutral-900 */
 
-  --foreground: oklch(0.985 0 0);  /* white */
-  --card-foreground: oklch(0.985 0 0);  /* white */
-  --popover-foreground: oklch(0.985 0 0);  /* white */
-  --muted: oklch(0.274 0.006 286);  /* neutral-800 */
-  --muted-foreground: oklch(0.705 0.015 286);  /* neutral-400 */
+  --foreground: oklch(0.985 0 0); /* white */
+  --card-foreground: oklch(0.985 0 0); /* white */
+  --popover-foreground: oklch(0.985 0 0); /* white */
+  --muted: oklch(0.274 0.006 286); /* neutral-800 */
+  --muted-foreground: oklch(0.705 0.015 286); /* neutral-400 */
 
   /* Accent colors are dynamically injected here by theme.js */
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
 
-  --border: oklch(1 0 0 / 10%);  /* transparent white */
-  --input: oklch(1 0 0 / 15%);  /* transparent white */  --sidebar: hsl(240 5.9% 10%);  --sidebar-foreground: hsl(240 4.8% 95.9%);  --sidebar-primary: hsl(224.3 76.3% 48%);  --sidebar-primary-foreground: hsl(0 0% 100%);  --sidebar-accent: hsl(240 3.7% 15.9%);  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);  --sidebar-border: hsl(240 3.7% 15.9%);  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  --border: oklch(1 0 0 / 10%); /* transparent white */
+  --input: oklch(1 0 0 / 15%); /* transparent white */
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
 /* ===== @THEME INLINE - THE BRIDGE PATTERN ===== */
@@ -344,7 +352,9 @@
 
     /* Form elements - inherit from CSS bridge variables for dark mode support */
     /* Border and input are defined in CSS bridge section and switch in dark mode */
-    --ring: var(--color-primary-500); /* Focus ring color - same in both modes */
+    --ring: var(
+      --color-primary-500
+    ); /* Focus ring color - same in both modes */
 
     /* ===== SHADCN CHART COLORS ===== */
     /* Used by Recharts components */
@@ -421,8 +431,18 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    transition: background-color var(--theme-transition), color var(--theme-transition);
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
+    transition:
+      background-color var(--theme-transition),
+      color var(--theme-transition);
   }
 
   /* Theme transitions disabled to prevent delays during dark mode switching */
@@ -435,10 +455,18 @@
   /* Manual utilities needed for shadcn compatibility and semantic colors: */
 
   /* Semantic colors - these use direct theme variables */
-  .bg-success { background-color: var(--color-success); }
-  .bg-warning { background-color: var(--color-warning); }
-  .bg-error { background-color: var(--color-error); }
-  .bg-info { background-color: var(--color-info); }
+  .bg-success {
+    background-color: var(--color-success);
+  }
+  .bg-warning {
+    background-color: var(--color-warning);
+  }
+  .bg-error {
+    background-color: var(--color-error);
+  }
+  .bg-info {
+    background-color: var(--color-info);
+  }
 
   /* Text colors */
   /* .text-background { color: var(--background); } */ /* Auto-generated by Tailwind v4 */
@@ -449,21 +477,43 @@
   /* .text-popover-foreground { color: var(--popover-foreground); } */ /* Auto-generated by Tailwind v4 */
   /* .text-muted { color: var(--muted); } */ /* Auto-generated by Tailwind v4 */
   /* .text-muted-foreground { color: var(--muted-foreground); } */ /* Auto-generated by Tailwind v4 */
-  .text-primary { color: var(--primary); } /* Needed - not mapped in @theme inline */
-  .text-primary-foreground { color: var(--primary-foreground); } /* Needed - not mapped in @theme inline */
-  .text-secondary { color: var(--secondary); } /* Needed - not mapped in @theme inline */
-  .text-secondary-foreground { color: var(--secondary-foreground); } /* Needed - not mapped in @theme inline */
-  .text-destructive { color: var(--destructive); } /* Needed - not mapped in @theme inline */
-  .text-destructive-foreground { color: var(--destructive-foreground); } /* Needed - not mapped in @theme inline */
+  .text-primary {
+    color: var(--primary);
+  } /* Needed - not mapped in @theme inline */
+  .text-primary-foreground {
+    color: var(--primary-foreground);
+  } /* Needed - not mapped in @theme inline */
+  .text-secondary {
+    color: var(--secondary);
+  } /* Needed - not mapped in @theme inline */
+  .text-secondary-foreground {
+    color: var(--secondary-foreground);
+  } /* Needed - not mapped in @theme inline */
+  .text-destructive {
+    color: var(--destructive);
+  } /* Needed - not mapped in @theme inline */
+  .text-destructive-foreground {
+    color: var(--destructive-foreground);
+  } /* Needed - not mapped in @theme inline */
   /* .text-border { color: var(--border); } */ /* Auto-generated by Tailwind v4 */
   /* .text-input { color: var(--input); } */ /* Auto-generated by Tailwind v4 */
-  .text-ring { color: var(--ring); } /* Needed - maps to different variable in @theme inline */
+  .text-ring {
+    color: var(--ring);
+  } /* Needed - maps to different variable in @theme inline */
 
   /* Semantic text colors */
-  .text-success { color: var(--color-success); }
-  .text-warning { color: var(--color-warning); }
-  .text-error { color: var(--color-error); }
-  .text-info { color: var(--color-info); }
+  .text-success {
+    color: var(--color-success);
+  }
+  .text-warning {
+    color: var(--color-warning);
+  }
+  .text-error {
+    color: var(--color-error);
+  }
+  .text-info {
+    color: var(--color-info);
+  }
 
   /* Border colors */
   /* .border-background { border-color: var(--background); } */ /* Auto-generated by Tailwind v4 */
@@ -474,20 +524,34 @@
   /* .border-popover-foreground { border-color: var(--popover-foreground); } */ /* Auto-generated by Tailwind v4 */
   /* .border-muted { border-color: var(--muted); } */ /* Auto-generated by Tailwind v4 */
   /* .border-muted-foreground { border-color: var(--muted-foreground); } */ /* Auto-generated by Tailwind v4 */
-  .border-primary { border-color: var(--primary); } /* Needed - not mapped in @theme inline */
-  .border-primary-foreground { border-color: var(--primary-foreground); } /* Needed - not mapped in @theme inline */
-  .border-secondary { border-color: var(--secondary); } /* Needed - not mapped in @theme inline */
-  .border-secondary-foreground { border-color: var(--secondary-foreground); } /* Needed - not mapped in @theme inline */
+  .border-primary {
+    border-color: var(--primary);
+  } /* Needed - not mapped in @theme inline */
+  .border-primary-foreground {
+    border-color: var(--primary-foreground);
+  } /* Needed - not mapped in @theme inline */
+  .border-secondary {
+    border-color: var(--secondary);
+  } /* Needed - not mapped in @theme inline */
+  .border-secondary-foreground {
+    border-color: var(--secondary-foreground);
+  } /* Needed - not mapped in @theme inline */
   /* .border-accent { border-color: var(--accent); } */ /* Will be needed when accent is mapped */
   /* .border-accent-foreground { border-color: var(--accent-foreground); } */ /* Will be needed when accent is mapped */
-  .border-destructive { border-color: var(--destructive); } /* Needed - not mapped in @theme inline */
-  .border-destructive-foreground { border-color: var(--destructive-foreground); } /* Needed - not mapped in @theme inline */
+  .border-destructive {
+    border-color: var(--destructive);
+  } /* Needed - not mapped in @theme inline */
+  .border-destructive-foreground {
+    border-color: var(--destructive-foreground);
+  } /* Needed - not mapped in @theme inline */
   /* .border-border { border-color: var(--border); } */ /* Auto-generated by Tailwind v4 */
   /* .border-input { border-color: var(--input); } */ /* Auto-generated by Tailwind v4 */
-  .border-ring { border-color: var(--ring); } /* Needed - maps to different variable in @theme inline */
+  .border-ring {
+    border-color: var(--ring);
+  } /* Needed - maps to different variable in @theme inline */
 
   /* Fix for shadcn select items in Tailwind v4 */
-  [data-slot="select-item"]:focus {
+  [data-slot='select-item']:focus {
     background-color: var(--muted) !important;
   }
 
@@ -585,7 +649,9 @@
 
   /* Dark mode card shadow */
   .dark .card {
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+    box-shadow:
+      0 1px 3px 0 rgb(0 0 0 / 0.3),
+      0 1px 2px -1px rgb(0 0 0 / 0.3);
   }
 
   /* Skeleton loader */

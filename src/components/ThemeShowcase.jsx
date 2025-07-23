@@ -2,13 +2,13 @@ import { Check, Star, Heart, ArrowRight } from 'lucide-react';
 
 export default function ThemeShowcase() {
   return (
-    <div className="max-w-7xl mx-auto p-8 space-y-12">
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 space-y-8 sm:space-y-12">
       {/* Header Section */}
       <section className="text-center">
-        <h1 className="text-5xl font-bold text-primary-500 mb-4">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-500 mb-4">
           Theme System Showcase
         </h1>
-        <p className="text-xl text-muted-foreground">
+        <p className="text-lg sm:text-xl text-muted-foreground">
           See how the primary color affects different UI elements
         </p>
       </section>
@@ -17,13 +17,13 @@ export default function ThemeShowcase() {
       <section className="bg-card rounded-lg shadow-lg dark:shadow-2xl overflow-hidden">
         <div className="bg-primary-500 text-white p-4">
           <nav className="flex items-center justify-between">
-            <div className="flex items-center space-x-6">
-              <h2 className="text-xl font-bold">Dashboard</h2>
-              <a href="#" className="hover:opacity-80 transition-opacity">Home</a>
-              <a href="#" className="hover:opacity-80 transition-opacity">Products</a>
-              <a href="#" className="hover:opacity-80 transition-opacity">Analytics</a>
+            <div className="flex items-center space-x-3 sm:space-x-6">
+              <h2 className="text-lg sm:text-xl font-bold">Dashboard</h2>
+              <a href="#" className="hover:opacity-80 transition-opacity hidden sm:inline">Home</a>
+              <a href="#" className="hover:opacity-80 transition-opacity hidden sm:inline">Products</a>
+              <a href="#" className="hover:opacity-80 transition-opacity hidden sm:inline">Analytics</a>
             </div>
-            <button className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-md transition-colors">
+            <button className="bg-white/20 hover:bg-white/30 px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors text-sm sm:text-base">
               Settings
             </button>
           </nav>
