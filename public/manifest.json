@@ -1,7 +1,7 @@
 {
-  "name": "Admin Dashboard Template",
-  "short_name": "Admin Dashboard",
-  "description": "Professional React admin dashboard template with Tailwind CSS v4, shadcn/ui components, and dynamic theming",
+  "name": "React Theme System Kit",
+  "short_name": "Theme Kit",
+  "description": "Production-ready React theme system with 8 professional themes, dark mode, 45+ components, and theme export tools",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -15,7 +15,7 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["productivity", "business", "developer"],
+  "categories": ["developer", "productivity", "utilities"],
   "lang": "en-US",
   "dir": "ltr"
 }

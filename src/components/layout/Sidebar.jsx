@@ -136,7 +136,7 @@ export default function Sidebar({ open, collapsed, onCollapsedChange, onOpenChan
               <FileCode className="w-5 h-5 text-primary-foreground" />
             </div>
             {!collapsed && (
-              <span className="font-semibold text-lg">Admin Pro</span>
+              <span className="font-semibold text-lg">Theme Kit</span>
             )}
           </Link>
           
