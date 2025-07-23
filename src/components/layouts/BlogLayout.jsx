@@ -28,6 +28,7 @@ import {
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { LayoutBanner } from "@/components/LayoutBanner"
+import LayoutHeader from "@/components/layouts/LayoutHeader"
 
 export default function BlogLayout() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -183,40 +184,35 @@ export default function BlogLayout() {
   return (
     <div className="min-h-screen bg-background">
       {/* Example Layout Banner */}
-      <div className="container mx-auto px-4 pt-6">
+      <div className="container mx-auto px-4 py-6">
         <LayoutBanner 
           title="Blog & Content" 
           description="article layouts, author profiles, and content management"
         />
       </div>
-
-      {/* Header */}
-      <div className="border-b">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl font-bold tracking-tight mb-4">Developer Blog</h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              Insights, tutorials, and best practices from our engineering team
-            </p>
-            
-            {/* Search */}
-            <div className="relative max-w-xl mx-auto">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder="Search articles..."
-                className="pl-10 pr-4"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-          </div>
+      
+      {/* Main Content */}
+      <div className="container mx-auto px-4 pb-8">
+        {/* Header */}
+        <LayoutHeader 
+          title="Developer Blog"
+          description="Insights, tutorials, and best practices from our engineering team"
+          className="-mx-4 mb-6"
+        >
+        {/* Search */}
+        <div className="relative w-full sm:w-96">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            placeholder="Search articles..."
+            className="pl-10 pr-4 w-full"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
-      </div>
-
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid lg:grid-cols-4 gap-8">
+        </LayoutHeader>
+        <div className="grid lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {/* Sidebar */}
-          <aside className="lg:col-span-1 space-y-6">
+          <aside className="lg:col-span-1 space-y-4 sm:space-y-6 order-2 lg:order-1">
             {/* Categories */}
             <Card>
               <CardHeader>
@@ -285,10 +281,10 @@ export default function BlogLayout() {
           </aside>
 
           {/* Main Content */}
-          <main className="lg:col-span-3 space-y-8">
+          <main className="lg:col-span-3 space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-2">
             {/* Featured Post */}
             <Card className="overflow-hidden">
-              <div className="aspect-[2/1] overflow-hidden">
+              <div className="aspect-[3/2] sm:aspect-[2/1] overflow-hidden">
                 <img 
                   src={featuredPost.coverImage} 
                   alt={featuredPost.title}
@@ -300,7 +296,7 @@ export default function BlogLayout() {
                   <Badge>{featuredPost.category}</Badge>
                   <span className="text-sm text-muted-foreground">Featured</span>
                 </div>
-                <CardTitle className="text-2xl">
+                <CardTitle className="text-xl sm:text-2xl">
                   <a href="#" className="hover:text-primary transition-colors">
                     {featuredPost.title}
                   </a>
@@ -321,7 +317,7 @@ export default function BlogLayout() {
                       <p className="text-xs text-muted-foreground">{featuredPost.author.role}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-muted-foreground">
                     <span className="flex items-center gap-1">
                       <Calendar className="h-3 w-3" />
                       {featuredPost.publishedAt}
@@ -334,22 +330,22 @@ export default function BlogLayout() {
                 </div>
               </CardContent>
               <CardFooter className="border-t">
-                <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center gap-4">
-                    <Button variant="ghost" size="sm">
-                      <Heart className="mr-2 h-4 w-4" />
-                      {featuredPost.likes}
+                <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-3">
+                  <div className="flex items-center gap-2 sm:gap-4">
+                    <Button variant="ghost" size="sm" className="h-8 px-2 sm:px-4">
+                      <Heart className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
+                      <span className="text-xs sm:text-sm">{featuredPost.likes}</span>
                     </Button>
-                    <Button variant="ghost" size="sm">
-                      <MessageSquare className="mr-2 h-4 w-4" />
-                      {featuredPost.comments}
+                    <Button variant="ghost" size="sm" className="h-8 px-2 sm:px-4">
+                      <MessageSquare className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
+                      <span className="text-xs sm:text-sm">{featuredPost.comments}</span>
                     </Button>
-                    <Button variant="ghost" size="sm">
-                      <Share2 className="mr-2 h-4 w-4" />
-                      Share
+                    <Button variant="ghost" size="sm" className="h-8 px-2 sm:px-4">
+                      <Share2 className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
+                      <span className="text-xs sm:text-sm">Share</span>
                     </Button>
                   </div>
-                  <Button>
+                  <Button className="w-full sm:w-auto">
                     Read More
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -359,14 +355,14 @@ export default function BlogLayout() {
 
             {/* Tabs */}
             <Tabs defaultValue="latest" className="space-y-6">
-              <div className="flex items-center justify-between">
-                <TabsList>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <TabsList className="grid grid-cols-3 w-full sm:w-auto">
                   <TabsTrigger value="latest">Latest</TabsTrigger>
                   <TabsTrigger value="popular">Popular</TabsTrigger>
                   <TabsTrigger value="trending">Trending</TabsTrigger>
                 </TabsList>
                 <Select value={viewMode} onValueChange={setViewMode}>
-                  <SelectTrigger className="w-32">
+                  <SelectTrigger className="w-full sm:w-32">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -384,7 +380,7 @@ export default function BlogLayout() {
                   {posts.map((post) => (
                     <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                       {viewMode === "grid" && (
-                        <div className="aspect-[16/9] overflow-hidden">
+                        <div className="aspect-[4/3] sm:aspect-[16/9] overflow-hidden">
                           <img 
                             src={post.coverImage} 
                             alt={post.title}

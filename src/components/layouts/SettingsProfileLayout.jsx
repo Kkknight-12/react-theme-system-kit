@@ -27,6 +27,7 @@ import {
 } from 'lucide-react'
 import { useState } from 'react'
 import { LayoutBanner } from '@/components/LayoutBanner'
+import LayoutHeader from '@/components/layouts/LayoutHeader'
 
 export default function SettingsProfileLayout() {
   const [emailNotifications, setEmailNotifications] = useState({
@@ -46,19 +47,22 @@ export default function SettingsProfileLayout() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-6xl mx-auto">
-          {/* Example Layout Banner */}
-          <LayoutBanner 
-            title="Settings & Profile" 
-            description="form controls, tabs, and user preferences"
-          />
-          
-          {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold tracking-tight">Account Settings</h1>
-            <p className="text-muted-foreground">Manage your account settings and preferences</p>
-          </div>
+      {/* Example Layout Banner */}
+      <div className="container mx-auto px-4 py-6">
+        <LayoutBanner 
+          title="Settings & Profile" 
+          description="form controls, tabs, and user preferences"
+        />
+      </div>
+      
+      {/* Main Content */}
+      <div className="container mx-auto px-4 pb-8">
+        {/* Header */}
+        <LayoutHeader 
+          title="Account Settings"
+          description="Manage your account settings and preferences"
+          className="-mx-4 mb-6"
+        />
 
           <div className="grid gap-8 lg:grid-cols-4">
             {/* Sidebar Navigation */}
@@ -438,7 +442,6 @@ export default function SettingsProfileLayout() {
               </Tabs>
             </div>
           </div>
-        </div>
       </div>
     </div>
   )

@@ -25,6 +25,7 @@ import {
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { LayoutBanner } from "@/components/LayoutBanner"
+import LayoutHeader from "@/components/layouts/LayoutHeader"
 
 // Product Image Component with loading state
 function ProductImage({ src, alt, className }) {
@@ -174,25 +175,19 @@ export default function EcommerceLayout() {
       </div>
       
       {/* Header */}
-      <div className="border-b">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <h1 className="text-3xl font-bold">Tech Store</h1>
-                <p className="text-muted-foreground">Discover the latest in technology</p>
-              </div>
-              <div className="relative w-full sm:w-96">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input 
-                  placeholder="Search products..." 
-                  className="pl-10"
-                />
-              </div>
-            </div>
-          </div>
+      <LayoutHeader 
+        title="Tech Store"
+        description="Discover the latest in technology"
+        className="mt-6"
+      >
+        <div className="relative w-full sm:w-96">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input 
+            placeholder="Search products..." 
+            className="pl-10 w-full"
+          />
         </div>
-      </div>
+      </LayoutHeader>
 
       {/* Features Bar */}
       <div className="bg-muted/50 py-3 border-b">

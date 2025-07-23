@@ -21,6 +21,7 @@ import {
 } from "lucide-react"
 import { useState } from "react"
 import { LayoutBanner } from "@/components/LayoutBanner"
+import LayoutHeader from "@/components/layouts/LayoutHeader"
 
 export default function DashboardLayout() {
   const [timeRange, setTimeRange] = useState("7d")
@@ -129,35 +130,37 @@ export default function DashboardLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-6 md:p-8">
+    <div className="min-h-screen bg-background">
       {/* Example Layout Banner */}
-      <LayoutBanner 
-        title="Dashboard Analytics" 
-        description="charts, stats, and data visualization components"
-      />
-      
-      {/* Header */}
-      <div className="mb-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight">Analytics Dashboard</h1>
-            <p className="text-muted-foreground">Welcome back! Here's what's happening with your business.</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <Button variant="outline" size="sm">
-              <Calendar className="mr-2 h-4 w-4" />
-              Last 30 days
-            </Button>
-            <Button size="sm">
-              <Download className="mr-2 h-4 w-4" />
-              Download Report
-            </Button>
-          </div>
-        </div>
+      <div className="container mx-auto px-4 py-6">
+        <LayoutBanner 
+          title="Dashboard Analytics" 
+          description="charts, stats, and data visualization components"
+        />
       </div>
+      
+      {/* Main Content */}
+      <div className="container mx-auto px-4 pb-8">
+        {/* Header */}
+        <LayoutHeader 
+          title="Analytics Dashboard"
+          description="Welcome back! Here's what's happening with your business."
+          className="-mx-4 mb-6"
+        >
+        <Button variant="outline" size="sm" className="w-full sm:w-auto">
+          <Calendar className="mr-2 h-4 w-4" />
+          <span className="hidden sm:inline">Last 30 days</span>
+          <span className="sm:hidden">30 days</span>
+        </Button>
+        <Button size="sm" className="w-full sm:w-auto">
+          <Download className="mr-2 h-4 w-4" />
+          <span className="hidden sm:inline">Download Report</span>
+          <span className="sm:hidden">Download</span>
+        </Button>
+        </LayoutHeader>
 
-      {/* Stats Grid */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
+        {/* Stats Grid */}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
         {stats.map((stat, index) => {
           const Icon = stat.icon
           return (
@@ -179,19 +182,19 @@ export default function DashboardLayout() {
             </Card>
           )
         })}
-      </div>
+        </div>
 
-      {/* Main Content Grid */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+        {/* Main Content Grid */}
+        <div className="grid gap-4 lg:grid-cols-7">
         {/* Chart Section */}
-        <Card className="col-span-full lg:col-span-4">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <Card className="col-span-full lg:col-span-4 overflow-hidden">
+          <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2">
             <div className="space-y-1">
-              <CardTitle>Revenue Overview</CardTitle>
-              <CardDescription>Your revenue and sales performance</CardDescription>
+              <CardTitle className="text-base sm:text-lg">Revenue Overview</CardTitle>
+              <CardDescription className="text-sm">Your revenue and sales performance</CardDescription>
             </div>
             <Select value={timeRange} onValueChange={setTimeRange}>
-              <SelectTrigger className="w-[160px]">
+              <SelectTrigger className="w-full sm:w-[160px]">
                 <SelectValue placeholder="Select period" />
               </SelectTrigger>
               <SelectContent>
@@ -201,9 +204,10 @@ export default function DashboardLayout() {
               </SelectContent>
             </Select>
           </CardHeader>
-          <CardContent className="pt-4">
-            <ChartContainer config={chartConfig} className="h-[350px] w-full">
-              <AreaChart data={chartData}>
+          <CardContent className="pt-4 px-2 sm:px-6">
+            <div className="w-full overflow-x-auto">
+              <ChartContainer config={chartConfig} className="h-[250px] sm:h-[300px] lg:h-[350px] min-w-[300px] w-full">
+                <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                 <defs>
                   <linearGradient id="fillRevenue" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="var(--chart-1)" stopOpacity={0.8} />
@@ -214,18 +218,22 @@ export default function DashboardLayout() {
                     <stop offset="95%" stopColor="var(--chart-2)" stopOpacity={0.1} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid vertical={false} strokeDasharray="3 3" className="stroke-muted" />
+                <CartesianGrid vertical={false} strokeDasharray="3 3" className="stroke-muted" opacity={0.3} />
                 <XAxis 
                   dataKey="date" 
                   tickLine={false}
                   axisLine={false}
-                  tickMargin={8}
+                  tickMargin={4}
+                  tick={{ fontSize: 11 }}
+                  interval="preserveStartEnd"
                 />
                 <YAxis
                   tickLine={false}
                   axisLine={false}
-                  tickMargin={8}
-                  tickFormatter={(value) => `$${value}`}
+                  tickMargin={4}
+                  tickFormatter={(value) => value >= 1000 ? `${value/1000}k` : value}
+                  tick={{ fontSize: 11 }}
+                  width={35}
                 />
                 <ChartTooltip
                   cursor={false}
@@ -245,9 +253,10 @@ export default function DashboardLayout() {
                   stroke="var(--chart-2)"
                   strokeWidth={2}
                 />
-                <ChartLegend content={<ChartLegendContent />} />
+                <ChartLegend content={<ChartLegendContent className="text-xs" />} />
               </AreaChart>
             </ChartContainer>
+            </div>
           </CardContent>
         </Card>
 
@@ -287,10 +296,10 @@ export default function DashboardLayout() {
             </div>
           </CardContent>
         </Card>
-      </div>
+        </div>
 
-      {/* Progress Section */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-8">
+        {/* Progress Section */}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-8">
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-base">Weekly Goal</CardTitle>
@@ -323,6 +332,7 @@ export default function DashboardLayout() {
             <p className="text-xs text-muted-foreground mt-2">92% on-time delivery</p>
           </CardContent>
         </Card>
+        </div>
       </div>
     </div>
   )
