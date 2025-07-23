@@ -6,6 +6,7 @@ import ShadcnShowcase from '@/components/ShadcnShowcase.jsx'
 import LandingPage from '@/components/LandingPage.jsx'
 import LayoutShowcase from '@/components/LayoutShowcase.jsx'
 import ThemeExport from '@/components/ThemeExport.jsx'
+import NotFound from '@/components/NotFound.jsx'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import './App.css'
 
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
   {
     path: "/export",
     element: <ExportPage />
+  },
+  {
+    path: "*",
+    element: <NotFound />
   }
 ])
 
