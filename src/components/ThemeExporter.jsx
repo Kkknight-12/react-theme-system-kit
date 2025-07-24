@@ -1,18 +1,31 @@
 import { useState } from 'react';
-import { Download, Upload, Copy, Check, FileJson, FileCode, Palette } from 'lucide-react';
+import { Check, Copy, Download, FileJson, Palette, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group.jsx';
-import { toast } from   "sonner"
-import { 
-  exportTheme, 
-  exportThemeAsJSON, 
+import { toast } from 'sonner';
+import {
+  exportTheme,
+  exportThemeAsJSON,
+  generateThemePreview,
   importThemeFromFile,
-  generateThemePreview 
 } from '@/utils/theme-export';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
 export function ThemeExporter() {
   const [themeName, setThemeName] = useState('my-custom-theme');
@@ -23,7 +36,9 @@ export function ThemeExporter() {
   const handleExport = () => {
     try {
       exportTheme(exportFormat, themeName);
-      toast.success(`Your theme has been exported as ${themeName}.${exportFormat === 'module' ? 'js' : exportFormat}`);
+      toast.success(
+        `Your theme has been exported as ${themeName}.${exportFormat === 'module' ? 'js' : exportFormat}`,
+      );
     } catch (error) {
       toast.error(error.message);
     }
@@ -41,7 +56,7 @@ export function ThemeExporter() {
     }
   };
 
-  const handleImport = async (event) => {
+  const handleImport = async event => {
     const file = event.target.files?.[0];
     if (!file) return;
 
@@ -62,7 +77,7 @@ export function ThemeExporter() {
     json: 'Standard JSON format for easy sharing and version control',
     css: 'CSS file with custom properties for direct inclusion',
     tailwind: 'Tailwind configuration for integration with existing projects',
-    module: 'JavaScript module for importing into theme presets'
+    module: 'JavaScript module for importing into theme presets',
   };
 
   return (
@@ -84,7 +99,7 @@ export function ThemeExporter() {
             <Input
               id="theme-name"
               value={themeName}
-              onChange={(e) => setThemeName(e.target.value)}
+              onChange={e => setThemeName(e.target.value)}
               placeholder="Enter theme name"
             />
           </div>
@@ -93,15 +108,26 @@ export function ThemeExporter() {
             <Label>Export Format</Label>
             <RadioGroup value={exportFormat} onValueChange={setExportFormat}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {Object.entries(formatDescriptions).map(([format, description]) => (
-                  <div key={format} className="flex items-start space-x-2">
-                    <RadioGroupItem value={format} id={format} className="mt-1" />
-                    <Label htmlFor={format} className="font-normal cursor-pointer">
-                      <div className="font-medium capitalize">{format}</div>
-                      <div className="text-sm text-muted-foreground">{description}</div>
-                    </Label>
-                  </div>
-                ))}
+                {Object.entries(formatDescriptions).map(
+                  ([format, description]) => (
+                    <div key={format} className="flex items-start space-x-2">
+                      <RadioGroupItem
+                        value={format}
+                        id={format}
+                        className="mt-1"
+                      />
+                      <Label
+                        htmlFor={format}
+                        className="font-normal cursor-pointer"
+                      >
+                        <div className="font-medium capitalize">{format}</div>
+                        <div className="text-sm text-muted-foreground">
+                          {description}
+                        </div>
+                      </Label>
+                    </div>
+                  ),
+                )}
               </div>
             </RadioGroup>
           </div>
@@ -176,10 +202,10 @@ export function ThemeExporter() {
               Visual preview of your current theme colors
             </DialogDescription>
           </DialogHeader>
-          <div 
-            dangerouslySetInnerHTML={{ 
-              __html: generateThemePreview(exportThemeAsJSON(themeName)) 
-            }} 
+          <div
+            dangerouslySetInnerHTML={{
+              __html: generateThemePreview(exportThemeAsJSON(themeName)),
+            }}
           />
         </DialogContent>
       </Dialog>

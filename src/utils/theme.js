@@ -16,11 +16,11 @@ function getHueFromHex(hex) {
   try {
     // Remove # if present
     const cleanHex = hex.replace('#', '');
-    
+
     // Convert hex to OKLCH
     // color-convert uses scales: L (0-100), C (0-32), H (0-360)
     const [, , h] = convert.hex.oklch(cleanHex);
-    
+
     // Return the hue value (already in 0-360 range)
     return h || 0;
   } catch (error) {
@@ -294,31 +294,32 @@ export function applyTheme(themeName) {
   }
 
   // Convert primary color to OKLCH for accent color generation
-  const primaryHex = (preset.primary['500'] || preset.primary.DEFAULT).replace('#', '');
-  
+  const primaryHex = (preset.primary['500'] || preset.primary.DEFAULT).replace(
+    '#',
+    '',
+  );
+
   let accentLight, accentDark;
-  
+
   try {
     // Get OKLCH values from primary color
     // color-convert scales: L (0-100), C (0-32), H (0-360)
     const [primaryL, primaryC, primaryH] = convert.hex.oklch(primaryHex);
-    
+
     // Convert to CSS OKLCH scales: L (0-1), C (0-0.4), H (0-360)
-    const cssL = primaryL / 100;
     const cssC = (primaryC / 32) * 0.4;
-    
+
     // Generate accent colors for ghost buttons based on article recommendations:
     // - Ghost buttons use lower chroma (0.05-0.15) for subtle appearance
     // - Light mode: high lightness (90-95%), medium-low chroma
     // - Dark mode: low lightness (20-25%), medium-low chroma
-    
+
     // Calculate appropriate chroma for ghost buttons
     // Use 40% of the primary color's chroma, with min 0.08 and max 0.12
     const ghostChroma = Math.max(0.08, Math.min(0.12, cssC * 0.4));
-    
+
     accentLight = `oklch(0.94 ${ghostChroma.toFixed(3)} ${primaryH})`;
     accentDark = `oklch(0.22 ${ghostChroma.toFixed(3)} ${primaryH})`;
-
   } catch (error) {
     console.error('Failed to generate accent colors:', error);
     // Fallback to neutral colors
@@ -477,7 +478,7 @@ export function initializeDarkMode() {
   } else {
     root.classList.remove('dark');
   }
-  
+
   // Set initial theme-color meta tag
   updateThemeColorMeta(isDark);
 }

@@ -1,19 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import {
-  Home,
   ArrowLeft,
-  Search,
-  Palette,
-  Sparkles,
-  RefreshCw,
   Code2,
-  Lightbulb,
   Compass,
+  Home,
   Map,
+  Palette,
+  RefreshCw,
+  Search,
+  Sparkles,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
@@ -316,7 +314,6 @@ export default function NotFound() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

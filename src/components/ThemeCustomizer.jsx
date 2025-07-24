@@ -1,9 +1,8 @@
 import { useSettings } from '@/contexts/settings-hooks';
-import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Switch } from '@/components/ui/switch';
-import { Sun, Moon } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
@@ -11,12 +10,7 @@ import { cn } from '@/lib/utils';
  * No floating elements - just the controls needed for customization
  */
 export function ThemeCustomizer() {
-  const { 
-    themeMode, 
-    themePreset, 
-    onToggleMode, 
-    onChangeColor 
-  } = useSettings();
+  const { themeMode, themePreset, onToggleMode, onChangeColor } = useSettings();
 
   const themes = [
     { name: 'default', label: 'Emerald', color: 'hsl(160, 84%, 39%)' },
@@ -50,7 +44,7 @@ export function ThemeCustomizer() {
         <Label>Color Preset</Label>
         <RadioGroup value={themePreset} onValueChange={onChangeColor}>
           <div className="grid grid-cols-4 gap-3">
-            {themes.map((theme) => (
+            {themes.map(theme => (
               <div key={theme.name}>
                 <RadioGroupItem
                   value={theme.name}
@@ -60,12 +54,12 @@ export function ThemeCustomizer() {
                 <Label
                   htmlFor={theme.name}
                   className={cn(
-                    "flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-3 hover:bg-accent hover:text-accent-foreground cursor-pointer",
-                    "peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                    'flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-3 hover:bg-accent hover:text-accent-foreground cursor-pointer',
+                    'peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary',
                   )}
                 >
-                  <div 
-                    className="w-8 h-8 rounded-full mb-2" 
+                  <div
+                    className="w-8 h-8 rounded-full mb-2"
                     style={{ backgroundColor: theme.color }}
                   />
                   <span className="text-xs font-medium">{theme.label}</span>

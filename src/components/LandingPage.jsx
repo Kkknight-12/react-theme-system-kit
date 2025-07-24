@@ -1,100 +1,124 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Check, Sparkles, Palette, Moon, Zap, Code, Smartphone, Shield, ArrowRight, Github, Package, Layers, GitBranch, LayoutDashboard, ShoppingBag, Settings, Download, Users, FileText } from "lucide-react"
-import { Link } from "react-router"
-import { useSettings } from "@/contexts/settings-hooks"
-import { cn } from "@/lib/utils"
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  ArrowRight,
+  Check,
+  Code,
+  Download,
+  FileText,
+  Layers,
+  LayoutDashboard,
+  Moon,
+  Package,
+  Palette,
+  Settings,
+  ShoppingBag,
+  Smartphone,
+  Sparkles,
+  Users,
+  Zap,
+} from 'lucide-react';
+import { Link } from 'react-router';
+import { useSettings } from '@/contexts/settings-hooks';
+import { cn } from '@/lib/utils';
 
 const features = [
   {
     icon: Palette,
-    title: "8 Professional Themes",
-    description: "Carefully crafted color schemes using color theory principles"
+    title: '8 Professional Themes',
+    description:
+      'Carefully crafted color schemes using color theory principles',
   },
   {
     icon: Moon,
-    title: "Dark/Light Mode",
-    description: "Seamless switching with no flash of unstyled content"
+    title: 'Dark/Light Mode',
+    description: 'Seamless switching with no flash of unstyled content',
   },
   {
     icon: Package,
-    title: "45+ Components",
-    description: "Full shadcn/ui library with consistent theming"
+    title: '45+ Components',
+    description: 'Full shadcn/ui library with consistent theming',
   },
   {
     icon: Zap,
-    title: "Lightning Fast",
-    description: "Powered by Vite and Tailwind CSS v4 for instant HMR"
+    title: 'Lightning Fast',
+    description: 'Powered by Vite and Tailwind CSS v4 for instant HMR',
   },
   {
     icon: Code,
-    title: "Developer Friendly",
-    description: "Clean code, well-documented, easy to customize"
+    title: 'Developer Friendly',
+    description: 'Clean code, well-documented, easy to customize',
   },
   {
     icon: Smartphone,
-    title: "Responsive Design",
-    description: "Optimized layouts that adapt to different screen sizes"
-  }
-]
+    title: 'Responsive Design',
+    description: 'Optimized layouts that adapt to different screen sizes',
+  },
+];
 
 const themes = [
-  { name: "default", label: "Emerald", color: "166" },
-  { name: "blue", label: "Blue", color: "259" },
-  { name: "purple", label: "Purple", color: "303" },
-  { name: "orange", label: "Orange", color: "47" },
-  { name: "red", label: "Rose", color: "16" },
-  { name: "teal", label: "Teal", color: "182" },
-  { name: "indigo", label: "Indigo", color: "277" },
-  { name: "pink", label: "Pink", color: "354" }
-]
+  { name: 'default', label: 'Emerald', color: '166' },
+  { name: 'blue', label: 'Blue', color: '259' },
+  { name: 'purple', label: 'Purple', color: '303' },
+  { name: 'orange', label: 'Orange', color: '47' },
+  { name: 'red', label: 'Rose', color: '16' },
+  { name: 'teal', label: 'Teal', color: '182' },
+  { name: 'indigo', label: 'Indigo', color: '277' },
+  { name: 'pink', label: 'Pink', color: '354' },
+];
 
 const pricing = [
   {
-    name: "Personal",
-    price: "$29",
-    description: "Perfect for side projects and freelancers",
+    name: 'Personal',
+    price: '$29',
+    description: 'Perfect for side projects and freelancers',
     features: [
-      "All 8 themes included",
-      "45+ shadcn/ui components",
-      "Lifetime updates",
-      "Personal & commercial use",
-      "Basic email support"
+      'All 8 themes included',
+      '45+ shadcn/ui components',
+      'Lifetime updates',
+      'Personal & commercial use',
+      'Basic email support',
     ],
-    popular: false
+    popular: false,
   },
   {
-    name: "Team",
-    price: "$99",
-    description: "Best for agencies and development teams",
+    name: 'Team',
+    price: '$99',
+    description: 'Best for agencies and development teams',
     features: [
-      "Everything in Personal",
-      "Team license (up to 10 devs)",
-      "Priority support",
-      "Custom theme request",
-      "Video tutorials access"
+      'Everything in Personal',
+      'Team license (up to 10 devs)',
+      'Priority support',
+      'Custom theme request',
+      'Video tutorials access',
     ],
-    popular: true
+    popular: true,
   },
   {
-    name: "Enterprise",
-    price: "$299",
-    description: "For large organizations with custom needs",
+    name: 'Enterprise',
+    price: '$299',
+    description: 'For large organizations with custom needs',
     features: [
-      "Everything in Team",
-      "Unlimited developers",
-      "White-label rights",
-      "1-on-1 onboarding call",
-      "Custom development support"
+      'Everything in Team',
+      'Unlimited developers',
+      'White-label rights',
+      '1-on-1 onboarding call',
+      'Custom development support',
     ],
-    popular: false
-  }
-]
+    popular: false,
+  },
+];
 
 export default function LandingPage() {
-  const { themePreset, onChangeColor } = useSettings()
+  const { themePreset, onChangeColor } = useSettings();
 
   return (
     <div className="min-h-screen bg-background">
@@ -111,8 +135,9 @@ export default function LandingPage() {
               React Theme System Kit
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Build beautiful, themeable React applications with our comprehensive design system. 
-              8 professional themes, 45+ components, dark mode, and more.
+              Build beautiful, themeable React applications with our
+              comprehensive design system. 8 professional themes, 45+
+              components, dark mode, and more.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="text-lg px-8" asChild>
@@ -140,20 +165,20 @@ export default function LandingPage() {
               Click any theme below to see it in action
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto mb-12">
-            {themes.map((theme) => (
+            {themes.map(theme => (
               <button
                 key={theme.name}
                 onClick={() => onChangeColor(theme.name)}
                 className={cn(
-                  "relative p-6 rounded-lg border-2 transition-all",
-                  themePreset === theme.name 
-                    ? "border-primary-500 bg-primary-500/10" 
-                    : "border-border hover:border-primary-500/50"
+                  'relative p-6 rounded-lg border-2 transition-all',
+                  themePreset === theme.name
+                    ? 'border-primary-500 bg-primary-500/10'
+                    : 'border-border hover:border-primary-500/50',
                 )}
               >
-                <div 
+                <div
                   className="w-12 h-12 rounded-full mb-3 mx-auto"
                   style={{ backgroundColor: `oklch(0.65 0.2 ${theme.color})` }}
                 />
@@ -234,10 +259,10 @@ export default function LandingPage() {
               A complete design system for modern React applications
             </p>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {features.map((feature, index) => {
-              const Icon = feature.icon
+              const Icon = feature.icon;
               return (
                 <Card key={index} className="border-2">
                   <CardHeader>
@@ -248,7 +273,7 @@ export default function LandingPage() {
                     <CardDescription>{feature.description}</CardDescription>
                   </CardHeader>
                 </Card>
-              )
+              );
             })}
           </div>
         </div>
@@ -265,7 +290,7 @@ export default function LandingPage() {
               Professional layouts that adapt to your theme
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <Card className="group hover:shadow-lg transition-shadow">
               <CardHeader>
@@ -486,14 +511,14 @@ export default function LandingPage() {
                 Clean, semantic code that's easy to understand and customize
               </p>
             </div>
-            
+
             <Tabs defaultValue="usage" className="w-full">
               <TabsList className="grid w-full grid-cols-3">
                 <TabsTrigger value="usage">Usage</TabsTrigger>
                 <TabsTrigger value="theme">Theme Config</TabsTrigger>
                 <TabsTrigger value="custom">Customization</TabsTrigger>
               </TabsList>
-              
+
               <TabsContent value="usage">
                 <Card>
                   <CardHeader>
@@ -523,7 +548,7 @@ export function MyComponent() {
                   </CardContent>
                 </Card>
               </TabsContent>
-              
+
               <TabsContent value="theme">
                 <Card>
                   <CardHeader>
@@ -552,7 +577,7 @@ export const themePresets = {
                   </CardContent>
                 </Card>
               </TabsContent>
-              
+
               <TabsContent value="custom">
                 <Card>
                   <CardHeader>
@@ -563,20 +588,22 @@ export const themePresets = {
                   </CardHeader>
                   <CardContent>
                     <pre className="bg-zinc-950 text-zinc-50 p-4 rounded-lg overflow-x-auto">
-                      <code>{`// Theme-aware colors
-<div className="bg-primary-500 text-white">
-  Primary background
-</div>
-
-// Dark mode support
-<div className="bg-white dark:bg-gray-900">
-  Adapts automatically
-</div>
-
-// Semantic colors
-<div className="bg-card text-card-foreground">
-  Themed card
-</div>`}</code>
+                      <code>
+                        {`// Theme-aware colors
+                        <div className="bg-primary-500 text-white">
+                          Primary background
+                        </div>
+                        
+                        // Dark mode support
+                        <div className="bg-white dark:bg-gray-900">
+                          Adapts automatically
+                        </div>
+                        
+                        // Semantic colors
+                        <div className="bg-card text-card-foreground">
+                          Themed card
+                        </div>`}
+                      </code>
                     </pre>
                   </CardContent>
                 </Card>
@@ -597,14 +624,14 @@ export const themePresets = {
               One-time payment, lifetime updates
             </p>
           </div>
-          
+
           <div className="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {pricing.map((plan) => (
-              <Card 
-                key={plan.name} 
+            {pricing.map(plan => (
+              <Card
+                key={plan.name}
                 className={cn(
-                  "relative",
-                  plan.popular && "border-primary-500 border-2"
+                  'relative',
+                  plan.popular && 'border-primary-500 border-2',
                 )}
               >
                 {plan.popular && (
@@ -629,9 +656,9 @@ export const themePresets = {
                       </li>
                     ))}
                   </ul>
-                  <Button 
-                    className="w-full" 
-                    variant={plan.popular ? "default" : "outline"}
+                  <Button
+                    className="w-full"
+                    variant={plan.popular ? 'default' : 'outline'}
                     size="lg"
                   >
                     Get Started
@@ -654,7 +681,7 @@ export const themePresets = {
               Using the latest and greatest tools
             </p>
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-lg bg-[#61DAFB]/10 flex items-center justify-center">
@@ -665,7 +692,7 @@ export const themePresets = {
                 <p className="text-sm text-muted-foreground">Latest version</p>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-lg bg-[#06B6D4]/10 flex items-center justify-center">
                 <span className="text-2xl">🎨</span>
@@ -675,7 +702,7 @@ export const themePresets = {
                 <p className="text-sm text-muted-foreground">Next-gen CSS</p>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-lg bg-primary-500/10 flex items-center justify-center">
                 <Layers className="h-6 w-6 text-primary-500" />
@@ -685,7 +712,7 @@ export const themePresets = {
                 <p className="text-sm text-muted-foreground">Copy & paste</p>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-lg bg-[#646CFF]/10 flex items-center justify-center">
                 <span className="text-2xl">⚡</span>
@@ -708,8 +735,8 @@ export const themePresets = {
                 Ready to Build Something Beautiful?
               </h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Get instant access to the React Theme System Kit and start building 
-                amazing themed applications today.
+                Get instant access to the React Theme System Kit and start
+                building amazing themed applications today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="text-lg px-8" asChild>
@@ -718,10 +745,11 @@ export const themePresets = {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
+                {/* GitHub link commented out until repo strategy is decided
                 <Button size="lg" variant="outline" className="text-lg px-8">
                   <Github className="mr-2 h-5 w-5" />
                   View on GitHub
-                </Button>
+                </Button> */}
               </div>
             </CardContent>
           </Card>
@@ -740,5 +768,5 @@ export const themePresets = {
         </div>
       </footer>
     </div>
-  )
+  );
 }

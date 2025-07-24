@@ -9,13 +9,6 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -91,19 +84,19 @@ import { Separator } from '@/components/ui/separator';
 import { toast } from 'sonner';
 import {
   AlertCircle,
-  Terminal,
-  Zap,
-  Sparkles,
-  ChevronRight,
-  User,
-  Settings,
-  LogOut,
-  ChevronDown,
-  Info,
-  Navigation,
   CalendarDays,
+  ChevronDown,
+  ChevronRight,
+  Info,
+  LogOut,
+  Navigation,
+  Settings,
+  Sparkles,
+  Terminal,
+  User,
+  Zap,
 } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function ShadcnShowcase() {
   const [dialogOpen, setDialogOpen] = useState(false);
