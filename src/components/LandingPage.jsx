@@ -146,8 +146,10 @@ export default function LandingPage() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8">
-                Get Started - $29
+              <Button size="lg" variant="outline" className="text-lg px-8" asChild>
+                <Link to="/checkout">
+                  Get Started - $79
+                </Link>
               </Button>
             </div>
           </div>
@@ -660,8 +662,11 @@ export const themePresets = {
                     className="w-full"
                     variant={plan.popular ? 'default' : 'outline'}
                     size="lg"
+                    asChild
                   >
-                    Get Started
+                    <Link to="/checkout">
+                      Get Started
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -759,11 +764,23 @@ export const themePresets = {
       {/* Footer */}
       <footer className="py-12 border-t">
         <div className="container mx-auto px-4">
-          <div className="text-center text-sm text-muted-foreground">
-            <p>© 2024 React Theme System Kit. All rights reserved.</p>
-            <p className="mt-2">
-              Built with ❤️ using React, Tailwind CSS v4, and shadcn/ui
-            </p>
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+              <div className="text-sm text-muted-foreground text-center sm:text-left">
+                <p>© 2024 React Theme System Kit. All rights reserved.</p>
+                <p className="mt-1">
+                  Built with ❤️ using React, Tailwind CSS v4, and shadcn/ui
+                </p>
+              </div>
+              <div className="flex gap-6 text-sm">
+                <Link to="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Privacy Policy
+                </Link>
+                <Link to="/terms" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Terms of Service
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
