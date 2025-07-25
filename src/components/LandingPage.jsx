@@ -77,44 +77,48 @@ const themes = [
 
 const pricing = [
   {
-    name: 'Personal',
+    name: 'Full Package',
     price: '$29',
-    description: 'Perfect for side projects and freelancers',
+    description: 'Everything you need to build amazing React apps',
     features: [
       'All 8 themes included',
       '45+ shadcn/ui components',
       'Lifetime updates',
       'Personal & commercial use',
-      'Basic email support',
-    ],
-    popular: false,
-  },
-  {
-    name: 'Team',
-    price: '$99',
-    description: 'Best for agencies and development teams',
-    features: [
-      'Everything in Personal',
-      'Team license (up to 10 devs)',
-      'Priority support',
-      'Custom theme request',
-      'Video tutorials access',
+      'Dark/Light mode support',
+      'Export in 4 formats',
+      'Source code access',
+      'Email support',
     ],
     popular: true,
   },
-  {
-    name: 'Enterprise',
-    price: '$299',
-    description: 'For large organizations with custom needs',
-    features: [
-      'Everything in Team',
-      'Unlimited developers',
-      'White-label rights',
-      '1-on-1 onboarding call',
-      'Custom development support',
-    ],
-    popular: false,
-  },
+  // Future pricing tiers - uncomment when ready
+  // {
+  //   name: 'Team',
+  //   price: '$79',
+  //   description: 'Best for agencies and development teams',
+  //   features: [
+  //     'Everything in Personal',
+  //     'Team license (up to 10 devs)',
+  //     'Priority support',
+  //     'Custom theme request',
+  //     'Video tutorials access',
+  //   ],
+  //   popular: true,
+  // },
+  // {
+  //   name: 'Enterprise',
+  //   price: '$299',
+  //   description: 'For large organizations with custom needs',
+  //   features: [
+  //     'Everything in Team',
+  //     'Unlimited developers',
+  //     'White-label rights',
+  //     '1-on-1 onboarding call',
+  //     'Custom development support',
+  //   ],
+  //   popular: false,
+  // },
 ];
 
 export default function LandingPage() {
@@ -147,8 +151,8 @@ export default function LandingPage() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="text-lg px-8" asChild>
-                <Link to="/checkout">
-                  Get Started - $79
+                <Link to="/payment">
+                  Get Started - $29
                 </Link>
               </Button>
             </div>
@@ -616,8 +620,9 @@ export const themePresets = {
       </section>
 
       {/* Pricing */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/5 via-transparent to-secondary-500/5" />
+        <div className="container mx-auto px-4 relative">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Simple, Transparent Pricing
@@ -627,47 +632,49 @@ export const themePresets = {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="max-w-xl mx-auto">
             {pricing.map(plan => (
               <Card
                 key={plan.name}
                 className={cn(
-                  'relative',
-                  plan.popular && 'border-primary-500 border-2',
+                  'relative shadow-lg',
+                  plan.popular && 'border-primary-500 border-2 scale-105',
                 )}
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <Badge className="px-3 py-1">Most Popular</Badge>
+                    <Badge className="px-4 py-1.5 text-sm">Limited Time Offer</Badge>
                   </div>
                 )}
-                <CardHeader className="text-center pb-8">
-                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                  <CardDescription>{plan.description}</CardDescription>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold">{plan.price}</span>
-                    <span className="text-muted-foreground">/one-time</span>
+                <CardHeader className="text-center pb-8 pt-8">
+                  <CardTitle className="text-3xl font-bold">{plan.name}</CardTitle>
+                  <CardDescription className="text-base mt-2">{plan.description}</CardDescription>
+                  <div className="mt-6">
+                    <span className="text-5xl font-bold">{plan.price}</span>
+                    <span className="text-muted-foreground text-lg ml-1">/one-time</span>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <ul className="space-y-3">
+                <CardContent className="space-y-6 px-8 pb-8">
+                  <ul className="space-y-4">
                     {plan.features.map((feature, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <Check className="h-5 w-5 text-primary-500 shrink-0 mt-0.5" />
-                        <span className="text-sm">{feature}</span>
+                        <span className="text-base">{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  <Button
-                    className="w-full"
-                    variant={plan.popular ? 'default' : 'outline'}
-                    size="lg"
-                    asChild
-                  >
-                    <Link to="/checkout">
-                      Get Started
-                    </Link>
-                  </Button>
+                  <div className="pt-4">
+                    <Button
+                      className="w-full text-lg py-6"
+                      variant={plan.popular ? 'default' : 'outline'}
+                      size="lg"
+                      asChild
+                    >
+                      <Link to="/payment">
+                        Get Instant Access
+                      </Link>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -764,22 +771,12 @@ export const themePresets = {
       {/* Footer */}
       <footer className="py-12 border-t">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-              <div className="text-sm text-muted-foreground text-center sm:text-left">
-                <p>© 2024 React Theme System Kit. All rights reserved.</p>
-                <p className="mt-1">
-                  Built with ❤️ using React, Tailwind CSS v4, and shadcn/ui
-                </p>
-              </div>
-              <div className="flex gap-6 text-sm">
-                <Link to="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Privacy Policy
-                </Link>
-                <Link to="/terms" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Terms of Service
-                </Link>
-              </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="text-sm text-muted-foreground">
+              <p>© 2024 React Theme System Kit. All rights reserved.</p>
+              <p className="mt-1">
+                Built with ❤️ using React, Tailwind CSS v4, and shadcn/ui
+              </p>
             </div>
           </div>
         </div>

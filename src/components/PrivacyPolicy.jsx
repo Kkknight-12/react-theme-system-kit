@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 export default function PrivacyPolicy() {
   const businessName = "React Theme System Kit";
-  const contactEmail = "support@yourdomain.com"; // Update this
+  const contactEmail = "devprojects.hq@gmail.com";
   const lastUpdated = "January 24, 2025";
 
   return (

@@ -7,10 +7,10 @@ import LandingPage from '@/components/LandingPage.jsx'
 import LayoutShowcase from '@/components/LayoutShowcase.jsx'
 import ThemeExport from '@/components/ThemeExport.jsx'
 import NotFound from '@/components/NotFound.jsx'
-import StripeCheckout from '@/components/StripeCheckout.jsx'
+import PaymentSelection from '@/components/PaymentSelection.jsx'
 import DownloadPage from '@/components/DownloadPage.jsx'
-import PrivacyPolicy from '@/components/PrivacyPolicy.jsx'
-import TermsOfService from '@/components/TermsOfService.jsx'
+// import PrivacyPolicy from '@/components/PrivacyPolicy.jsx'
+// import TermsOfService from '@/components/TermsOfService.jsx'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import './App.css'
 
@@ -83,21 +83,21 @@ const router = createBrowserRouter([
     element: <ExportPage />
   },
   {
-    path: "/checkout",
-    element: <StripeCheckout />
+    path: "/payment",
+    element: <PaymentSelection />
   },
   {
     path: "/download",
     element: <DownloadPage />
   },
-  {
-    path: "/privacy",
-    element: <PrivacyPolicy />
-  },
-  {
-    path: "/terms",
-    element: <TermsOfService />
-  },
+  // {
+  //   path: "/privacy",
+  //   element: <PrivacyPolicy />
+  // },
+  // {
+  //   path: "/terms",
+  //   element: <TermsOfService />
+  // },
   {
     path: "*",
     element: <NotFound />

@@ -92,7 +92,7 @@ export default function DownloadPage() {
               <HelpCircle className="h-4 w-4" />
               <AlertDescription>
                 If you've just made a purchase, please check your email for the download link.
-                If you continue to have issues, contact support@reactthemesystem.com with your order ID.
+                If you continue to have issues, contact devprojects.hq@gmail.com with your order ID.
               </AlertDescription>
             </Alert>
             <Button onClick={() => navigate('/')} className="w-full">
@@ -185,7 +185,7 @@ export default function DownloadPage() {
             <CardContent className="space-y-2 text-sm">
               <p>• Check the README.md file</p>
               <p>• Read the docs in /docs folder</p>
-              <p>• Email: support@reactthemesystem.com</p>
+              <p>• Email: devprojects.hq@gmail.com</p>
               <p>• Include your Order ID for faster support</p>
             </CardContent>
           </Card>

@@ -9,7 +9,7 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/logo.webp",
+      "src": "/favicon.webp",
       "sizes": "512x512",
       "type": "image/webp",
       "purpose": "any maskable"

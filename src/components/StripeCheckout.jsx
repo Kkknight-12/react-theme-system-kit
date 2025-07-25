@@ -19,8 +19,8 @@ import { toast } from 'sonner';
 
 // Razorpay configuration (Active)
 const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_XXXXXXXXXX';
-const RAZORPAY_AMOUNT = import.meta.env.VITE_RAZORPAY_AMOUNT || 7900; // Amount in paise (₹79)
-const RAZORPAY_CURRENCY = import.meta.env.VITE_RAZORPAY_CURRENCY || 'INR';
+const RAZORPAY_AMOUNT = import.meta.env.VITE_RAZORPAY_AMOUNT || 2900; // Amount in cents ($29)
+const RAZORPAY_CURRENCY = import.meta.env.VITE_RAZORPAY_CURRENCY || 'USD';
 
 export default function StripeCheckout() {
   const [isLoading, setIsLoading] = useState(false);
@@ -42,13 +42,13 @@ export default function StripeCheckout() {
     // Track checkout event (optional)
     if (window.gtag) {
       window.gtag('event', 'begin_checkout', {
-        value: 79.0,
-        currency: 'INR',
+        value: 29.0,
+        currency: 'USD',
         items: [
           {
             item_id: 'react-theme-system-kit',
             item_name: 'React Theme System Kit',
-            price: 79.0,
+            price: 29.0,
             quantity: 1,
           },
         ],
@@ -71,7 +71,7 @@ export default function StripeCheckout() {
       currency: RAZORPAY_CURRENCY,
       name: 'React Theme System Kit',
       description: 'Complete theme system with 8 themes and 45+ components',
-      image: '/logo.webp', // Your logo
+      image: '/favicon.webp', // Your logo
       handler: function (response) {
         // Payment successful
         toast.success('Payment successful! Redirecting to download...');
@@ -127,8 +127,8 @@ export default function StripeCheckout() {
           </CardDescription>
           <div className="mt-6">
             <div className="flex items-baseline justify-center gap-1">
-              <span className="text-5xl font-bold">₹79</span>
-              <span className="text-muted-foreground line-through text-lg ml-2">₹1999</span>
+              <span className="text-5xl font-bold">$29</span>
+              <span className="text-muted-foreground line-through text-lg ml-2">$79</span>
             </div>
           </div>
         </CardHeader>
@@ -151,8 +151,8 @@ export default function StripeCheckout() {
               <span>Secure checkout</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Smartphone className="h-4 w-4" />
-              <span>UPI & Cards accepted</span>
+              <CreditCard className="h-4 w-4" />
+              <span>All major cards accepted</span>
             </div>
           </div>
 
@@ -180,7 +180,7 @@ export default function StripeCheckout() {
               Instant download after purchase
             </p>
             <p className="text-xs text-muted-foreground">
-              Questions? Email support@reactthemesystem.com
+              Questions? Email devprojects.hq@gmail.com
             </p>
           </div>
         </CardContent>
