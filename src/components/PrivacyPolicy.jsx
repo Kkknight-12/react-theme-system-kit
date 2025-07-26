@@ -29,7 +29,7 @@ export default function PrivacyPolicy() {
             <ul>
               <li>Email address (for order delivery and support)</li>
               <li>Name (for payment processing)</li>
-              <li>Payment information (processed securely by Stripe - we never see your card details)</li>
+              <li>Payment information (processed securely by Gumroad/LemonSqueezy - we never see your card details)</li>
             </ul>
 
             <h3>Information Automatically Collected</h3>
@@ -52,16 +52,18 @@ export default function PrivacyPolicy() {
 
             <h2>3. Data Storage and Security</h2>
             <ul>
-              <li>Payment processing is handled by Stripe, a PCI-compliant payment processor</li>
+              <li>Payment processing is handled by Gumroad or LemonSqueezy, both secure payment processors</li>
               <li>We do not store credit card information</li>
+              <li>Your personal data is only stored by the payment processor you choose</li>
+              <li>We only receive your email and name for order delivery</li>
               <li>Order information is retained for tax and legal compliance</li>
-              <li>We use industry-standard security measures to protect your data</li>
             </ul>
 
             <h2>4. Third-Party Services</h2>
             <p>We use the following third-party services:</p>
             <ul>
-              <li><strong>Stripe</strong>: Payment processing (see <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe's Privacy Policy</a>)</li>
+              <li><strong>Gumroad</strong>: Payment processing and delivery (<a href="https://gumroad.com/privacy" target="_blank" rel="noopener noreferrer">Gumroad's Privacy Policy</a>)</li>
+              <li><strong>LemonSqueezy</strong>: Payment processing (<a href="https://www.lemonsqueezy.com/privacy" target="_blank" rel="noopener noreferrer">LemonSqueezy's Privacy Policy</a>)</li>
               <li><strong>Email Service</strong>: For sending transactional emails</li>
               <li><strong>Analytics</strong>: Basic analytics to improve our service (if applicable)</li>
             </ul>
@@ -77,12 +79,12 @@ export default function PrivacyPolicy() {
             </ul>
 
             <h2>6. Cookies</h2>
-            <p>We use essential cookies for:</p>
+            <p>The product demo uses localStorage (not cookies) for:</p>
             <ul>
-              <li>Maintaining your session</li>
-              <li>Remembering your preferences (theme selection)</li>
-              <li>Security purposes</li>
+              <li>Remembering your theme preferences</li>
+              <li>Saving export settings</li>
             </ul>
+            <p>No tracking cookies are used.</p>
 
             <h2>7. Marketing Communications</h2>
             <p>We only send:</p>

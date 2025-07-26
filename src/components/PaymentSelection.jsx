@@ -30,44 +30,42 @@ const paymentOptions = [
   {
     name: 'LemonSqueezy',
     description: 'Best for international customers',
-    fee: '5% + 50¢',
     rating: 5,
     recommended: true,
     features: [
       'Handles global taxes automatically',
       'Beautiful checkout experience',
-      'Instant payouts available',
-      'No personal info required',
-      'Subscription management',
+      'Instant digital delivery',
+      'Secure payment processing',
+      'Customer account management',
     ],
     pros: [
-      'Lower fees',
       'Professional checkout',
       'Tax compliance handled',
+      'International payments',
     ],
-    url: 'https://devprojects.lemonsqueezy.com/buy/react-theme-system-kit', // TODO: Replace with your actual LemonSqueezy URL
+    url: 'https://devprojects.lemonsqueezy.com/buy/react-theme-system-kit', // Replace when you have LemonSqueezy
     icon: '🍋',
     color: 'bg-yellow-500/10',
     borderColor: 'border-yellow-500/20',
   },
   {
     name: 'Gumroad',
-    description: 'Easiest and fastest setup',
-    fee: '10% per sale',
+    description: 'Trusted by creators worldwide',
     rating: 5,
     features: [
-      'Zero setup time',
-      'Built-in marketplace',
-      'Existing customer base',
-      'No verification needed',
+      'Instant digital delivery',
+      'Built-in marketplace exposure',
+      'Automatic updates for customers',
+      'Secure checkout process',
       'Simple and reliable',
     ],
     pros: [
-      'Start selling immediately',
-      'Huge marketplace',
-      'No hassle',
+      'Established platform',
+      'Creator-friendly',
+      'Easy for customers',
     ],
-    url: 'https://gumroad.com/l/react-theme-system-kit', // TODO: Replace with your actual Gumroad URL
+    url: 'https://mayankster686.gumroad.com/l/lafgtx',
     icon: '🛍️',
     color: 'bg-pink-500/10',
     borderColor: 'border-pink-500/20',
@@ -128,9 +126,6 @@ export default function PaymentSelection() {
                   </div>
                   <CardTitle className="text-xl mt-3">{option.name}</CardTitle>
                   <CardDescription>{option.description}</CardDescription>
-                  <Badge variant="secondary" className="mt-2 w-fit">
-                    Fee: {option.fee}
-                  </Badge>
                 </CardHeader>
                 
                 <CardContent className="space-y-4">
@@ -155,22 +150,6 @@ export default function PaymentSelection() {
               </Card>
             ))}
           </div>
-
-          <Card className="bg-muted/50">
-            <CardContent className="pt-6">
-              <div className="flex items-start gap-3">
-                <Shield className="w-5 h-5 text-muted-foreground mt-0.5" />
-                <div className="space-y-1">
-                  <p className="font-medium">Why these platforms?</p>
-                  <p className="text-sm text-muted-foreground">
-                    As a solo developer, I chose platforms that don't require personal phone numbers 
-                    or complex business verification. Both handle taxes, provide instant downloads, 
-                    and offer excellent customer protection.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
 
           <div className="mt-8 text-center">
             <p className="text-sm text-muted-foreground mb-2">
@@ -220,9 +199,6 @@ export default function PaymentSelection() {
                         <span className="text-xs">{pro}</span>
                       </div>
                     ))}
-                  </div>
-                  <div className="mt-3 pt-3 border-t">
-                    <span className="text-xs text-muted-foreground">Fee: {option.fee}</span>
                   </div>
                 </CardContent>
               </Card>

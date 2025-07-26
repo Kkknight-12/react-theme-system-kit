@@ -771,10 +771,37 @@ export const themePresets = {
       {/* Footer */}
       <footer className="py-12 border-t">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="text-sm text-muted-foreground">
-              <p>© 2024 React Theme System Kit. All rights reserved.</p>
-              <p className="mt-1">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div>
+                <h3 className="font-semibold mb-3">Product</h3>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li><Link to="/demo" className="hover:text-foreground transition-colors">Demo</Link></li>
+                  <li><Link to="/layouts" className="hover:text-foreground transition-colors">Layouts</Link></li>
+                  <li><Link to="/export" className="hover:text-foreground transition-colors">Export Theme</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-3">Support</h3>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li><Link to="/contact" className="hover:text-foreground transition-colors">Contact Us</Link></li>
+                  <li><Link to="/payment" className="hover:text-foreground transition-colors">Purchase</Link></li>
+                  <li><a href="mailto:devprojects.hq@gmail.com" className="hover:text-foreground transition-colors">Email Support</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-3">Legal</h3>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li><Link to="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link></li>
+                  <li><Link to="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link></li>
+                </ul>
+              </div>
+            </div>
+            <div className="text-center pt-8 border-t">
+              <p className="text-sm text-muted-foreground">
+                © 2024 React Theme System Kit. All rights reserved.
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
                 Built with ❤️ using React, Tailwind CSS v4, and shadcn/ui
               </p>
             </div>

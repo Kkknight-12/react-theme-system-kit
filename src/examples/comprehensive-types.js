@@ -8,14 +8,14 @@
 const buttonProps = {
   variant: 'outline',
   size: 'lg',
-  onClick: () => console.log('clicked'),
+  onClick: () => {},  // Handle click
   disabled: false
 };
 
 /** @type {import('../components/ui/types').DialogProps} */
 const dialogProps = {
   open: true,
-  onOpenChange: (open) => console.log('Dialog open:', open),
+  onOpenChange: (open) => {},  // Handle dialog state
   modal: true
 };
 
@@ -23,7 +23,7 @@ const dialogProps = {
 const dropdownProps = {
   open: false,
   defaultOpen: false,
-  onOpenChange: (open) => console.log('Dropdown open:', open)
+  onOpenChange: (open) => {}  // Handle dropdown state
 };
 
 /** @type {import('../components/ui/types').TableProps} */
@@ -35,7 +35,7 @@ const tableProps = {
 // Layout Component Types
 /** @type {import('../components/layout/types').HeaderProps} */
 const headerProps = {
-  onMenuClick: () => console.log('Menu clicked')
+  onMenuClick: () => {}  // Handle menu click
 };
 
 /** @type {import('../components/layout/types').SidebarMenuItem} */

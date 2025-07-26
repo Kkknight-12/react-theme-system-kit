@@ -9,8 +9,9 @@ import ThemeExport from '@/components/ThemeExport.jsx'
 import NotFound from '@/components/NotFound.jsx'
 import PaymentSelection from '@/components/PaymentSelection.jsx'
 import DownloadPage from '@/components/DownloadPage.jsx'
-// import PrivacyPolicy from '@/components/PrivacyPolicy.jsx'
-// import TermsOfService from '@/components/TermsOfService.jsx'
+import PrivacyPolicy from '@/components/PrivacyPolicy.jsx'
+import TermsOfService from '@/components/TermsOfService.jsx'
+import Contact from '@/components/Contact.jsx'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import './App.css'
 
@@ -90,14 +91,18 @@ const router = createBrowserRouter([
     path: "/download",
     element: <DownloadPage />
   },
-  // {
-  //   path: "/privacy",
-  //   element: <PrivacyPolicy />
-  // },
-  // {
-  //   path: "/terms",
-  //   element: <TermsOfService />
-  // },
+  {
+    path: "/privacy",
+    element: <PrivacyPolicy />
+  },
+  {
+    path: "/terms",
+    element: <TermsOfService />
+  },
+  {
+    path: "/contact",
+    element: <Contact />
+  },
   {
     path: "*",
     element: <NotFound />
