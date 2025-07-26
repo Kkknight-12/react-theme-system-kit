@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -44,7 +45,7 @@ const paymentOptions = [
       'Tax compliance handled',
       'International payments',
     ],
-    url: 'https://devprojects.lemonsqueezy.com/buy/react-theme-system-kit', // Replace when you have LemonSqueezy
+    url: 'https://dev-projects.lemonsqueezy.com/buy/ed74920e-bc99-480c-9733-7aaac3d4f5f6',
     icon: '🍋',
     color: 'bg-yellow-500/10',
     borderColor: 'border-yellow-500/20',
@@ -74,6 +75,7 @@ const paymentOptions = [
 
 export default function PaymentSelection() {
   const [isOpen, setIsOpen] = useState(true);
+  const navigate = useNavigate();
 
   const handlePaymentChoice = (option) => {
     // Track the choice
@@ -86,22 +88,26 @@ export default function PaymentSelection() {
     }
     
     // Redirect to the chosen platform
-    window.location.href = option.url;
+    if (option.internal) {
+      navigate(option.url);
+    } else {
+      window.location.href = option.url;
+    }
   };
 
   return (
     <>
       {/* Page version */}
       <div className="min-h-screen bg-background py-12 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold mb-2">Choose Your Payment Method</h1>
             <p className="text-muted-foreground">
-              Both options are secure and instant. Pick the one that works best for you.
+              All options are secure. Choose the one that works best for you.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
             {paymentOptions.map((option) => (
               <Card 
                 key={option.name} 
@@ -164,11 +170,11 @@ export default function PaymentSelection() {
 
       {/* Modal version (optional) */}
       <Dialog open={false} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-3xl">
+        <DialogContent className="max-w-2xl">
           <DialogHeader>
             <DialogTitle>Choose Your Payment Method</DialogTitle>
             <DialogDescription>
-              Both options are secure and instant. Pick the one that works best for you.
+              All options are secure. Choose the one that works best for you.
             </DialogDescription>
           </DialogHeader>
           
